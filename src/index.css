@@ -1,0 +1,35 @@
+body {
+  margin: 0;
+  font-family: 'Courier New', Courier, monospace;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+code {
+  font-family: 'Courier New', Courier, monospace;
+}
+
+input {
+  padding: 10px;
+  border-width: 2px;
+  width: 400px;
+  text-align: center;
+  color: #282c34;
+  background-color: white;
+  font-family: 'Courier New', Courier, monospace;
+  font-size: calc(15px + 1vmin);
+}
+
+.react-datepicker__month-container {
+  font-family: 'Courier New', Courier, monospace;
+}
+
+.react-datepicker__time-container {
+  font-family: 'Courier New', Courier, monospace;
+}
+
+.react-datepicker {
+  font-family: 'Courier New', Courier, monospace;
+  font-size: 1rem;
+
+}
