@@ -33,6 +33,7 @@ button {
   overflow: hidden;
   width: 70%;
   margin: auto;
+  min-width: 576px;
 }
 
 .card-img {
@@ -40,7 +41,7 @@ button {
   height: 200px;
 }
 
-@media (min-width: 576px) and (max-width: 768px) {
+@media (min-width: 576px) {
   .card-columns {
     -webkit-column-count: 2;
     -moz-column-count: 2;
