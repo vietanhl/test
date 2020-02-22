@@ -1,5 +1,4 @@
-import React from 'react';
-import styled from 'styled-components';
+import React, { useState, useEffect } from 'react';
 import {
   Card,
   Button,
@@ -12,101 +11,43 @@ import {
 } from 'reactstrap';
 
 const TreatmentCard: React.FunctionComponent = () => {
+  const title = 'Title';
+  const price = '£20';
+  const description = 'this is a description of the product';
+  const cardObject = { title: title, price: price, description: description };
+
+  const testObject = [
+    <Card>
+      <CardImg
+        height="10%"
+        width="20%"
+        src={require('../../Images/nail.jpg')}
+        alt="Card image cap"
+      />
+      <CardBody>
+        <CardTitle>{cardObject.title}</CardTitle>
+        <CardSubtitle>{cardObject.price}</CardSubtitle>
+        <CardText>{cardObject.description}</CardText>
+        <Button>Book Now</Button>
+      </CardBody>
+    </Card>,
+  ];
+
+  const [arrayOfCards, setArrayOfCards] = useState([testObject]);
+  useEffect(() => {
+    repeatCards();
+  }, []);
+  const repeatCards = () => {
+    var newArrayOfCards = [...arrayOfCards];
+    for (let i = 0; i < 5; i++) {
+      newArrayOfCards.push(testObject);
+    }
+    setArrayOfCards(newArrayOfCards);
+  };
+
   return (
     <>
-      <CardColumns>
-        <Card>
-          <CardImg
-            height="10%"
-            width="20%"
-            src={require('../../Images/nail.jpg')}
-            alt="Card image cap"
-          />
-          <CardBody>
-            <CardTitle>Card title</CardTitle>
-            <CardSubtitle>£20</CardSubtitle>
-            <CardText>
-              This is a wider card with supporting text below as a natural
-              lead-in to additional content. This content is a little bit
-              longer.
-            </CardText>
-            <Button>Book Now</Button>
-          </CardBody>
-        </Card>
-
-        <Card>
-          <CardImg
-            height="10%"
-            width="20%"
-            src={require('../../Images/nail.jpg')}
-            alt="Card image cap"
-          />
-          <CardBody>
-            <CardTitle>Card title</CardTitle>
-            <CardSubtitle>£30</CardSubtitle>
-            <CardText>
-              This is a wider card with supporting text below as a natural
-              lead-in to additional content. This content is a little bit
-              longer.
-            </CardText>
-            <Button>Book Now</Button>
-          </CardBody>
-        </Card>
-        <Card>
-          <CardImg
-            height="10%"
-            width="20%"
-            src={require('../../Images/nail.jpg')}
-            alt="Card image cap"
-          />
-          <CardBody>
-            <CardTitle>Card title</CardTitle>
-            <CardSubtitle>£40</CardSubtitle>
-            <CardText>
-              This is a wider card with supporting text below as a natural
-              lead-in to additional content. This content is a little bit
-              longer.
-            </CardText>
-            <Button>Book Now</Button>
-          </CardBody>
-        </Card>
-        <Card>
-          <CardImg
-            height="10%"
-            width="20%"
-            src={require('../../Images/nail.jpg')}
-            alt="Card image cap"
-          />
-          <CardBody>
-            <CardTitle>Card title</CardTitle>
-            <CardSubtitle>£8</CardSubtitle>
-            <CardText>
-              This is a wider card with supporting text below as a natural
-              lead-in to additional content. This content is a little bit
-              longer.
-            </CardText>
-            <Button>Book Now</Button>
-          </CardBody>
-        </Card>
-        <Card>
-          <CardImg
-            height="10%"
-            width="20%"
-            src={require('../../Images/nail.jpg')}
-            alt="Card image cap"
-          />
-          <CardBody>
-            <CardTitle>Card title</CardTitle>
-            <CardSubtitle>£45</CardSubtitle>
-            <CardText>
-              This is a wider card with supporting text below as a natural
-              lead-in to additional content. This content is a little bit
-              longer.
-            </CardText>
-            <Button>Book Now</Button>
-          </CardBody>
-        </Card>
-      </CardColumns>
+      <CardColumns>{arrayOfCards}</CardColumns>
     </>
   );
 };
