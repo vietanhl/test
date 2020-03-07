@@ -1,6 +1,6 @@
 import React from 'react';
 import useFetchRequest from '../../hooks/api/useFetchRequest';
-import * as endpoints from '../../api';
+import * as endpoints from '../../Api/endpoints';
 
 const OpeningHoursContainer: React.FunctionComponent = () => {
   const data = useFetchRequest(endpoints.openingHours);

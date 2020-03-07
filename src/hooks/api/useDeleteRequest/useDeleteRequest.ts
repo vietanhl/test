@@ -1,4 +1,4 @@
-import { del } from '../../../api/utils';
+import { del } from '../../../Api/utils';
 
 const useDeleteRequest = (baseUrl: string) => {
   const request = async (path: string) => {

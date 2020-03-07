@@ -9,8 +9,10 @@ import {
   CardBody,
   CardColumns,
 } from 'reactstrap';
+import BookButton from '../BookButton';
 
-const TreatmentCard: React.FunctionComponent = () => {
+const TreatmentCard: React.FunctionComponent = (props: any) => {
+  //TODO: Add treatment id to book button
   const title = 'Title';
   const price = '£20';
   const description = 'this is a description of the product';
@@ -28,7 +30,7 @@ const TreatmentCard: React.FunctionComponent = () => {
         <CardTitle>{cardObject.title}</CardTitle>
         <CardSubtitle>{cardObject.price}</CardSubtitle>
         <CardText>{cardObject.description}</CardText>
-        <Button>Book Now</Button>
+        <BookButton {...props}>Book Now</BookButton>
       </CardBody>
     </Card>,
   ];

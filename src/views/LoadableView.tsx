@@ -16,3 +16,8 @@ export const ContactView = Loadable({
   loader: () => import('./Contact'),
   loading: () => <Spinner color="dark" />,
 });
+
+export const LoginView = Loadable({
+  loader: () => import('./Login'),
+  loading: () => <Spinner color="dark" />,
+});

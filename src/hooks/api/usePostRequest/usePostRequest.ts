@@ -1,4 +1,4 @@
-import { post } from '../../../api/utils';
+import { post } from '../../../Api/utils';
 
 const usePostRequest = <RequestType, ResponseType = {}>(
   url: string,

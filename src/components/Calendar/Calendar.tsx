@@ -3,8 +3,9 @@ import DatePicker from 'react-datepicker';
 // import setHours from 'react-datepicker';
 // import setMinutes from 'react-datepicker';
 import 'react-datepicker/dist/react-datepicker.css';
+import ConfirmBookingButton from '../ConfirmBookingButton/ConfirmBookingButton';
 
-const Calendar: React.FunctionComponent = () => {
+const Calendar: React.FunctionComponent = (props: any) => {
   const [startDate, setStartDate] = useState();
   // setHours(setMinutes(new Date(), 30), 16)
   var today: any = new Date();
@@ -28,6 +29,7 @@ const Calendar: React.FunctionComponent = () => {
           dateFormat="MMMM d, yyyy h:mm aa"
           placeholderText="Select an appointment time"
         />
+        <ConfirmBookingButton {...props} />
       </div>
     </>
   );

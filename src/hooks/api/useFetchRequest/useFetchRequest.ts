@@ -1,5 +1,5 @@
 import { useEffect, useState, useRef, useCallback } from 'react';
-import { get } from '../../../api/utils';
+import { get } from '../../../Api/utils';
 import Axios, { Canceler, AxiosError } from 'axios';
 
 const wait = (delay: number) => {

@@ -1,6 +1,8 @@
 import React from 'react';
 import styled from 'styled-components';
 import { NavLink } from 'react-router-dom';
+import LoginButton from '../LoginButton';
+import LogoutButton from '../Logout';
 
 const ContainerUl = styled.ul`
   padding-top: 20px;
@@ -22,7 +24,8 @@ const ContainerLi = styled.li`
   }
 `;
 
-const Menu: React.FunctionComponent = () => {
+const Menu: React.FunctionComponent = (props: any) => {
+  const { isAuthenticated } = props.auth;
   return (
     <div>
       <ContainerUl>
@@ -37,6 +40,17 @@ const Menu: React.FunctionComponent = () => {
         <ContainerLi>
           {' '}
           <NavLink to="/contact">- Contact -</NavLink>{' '}
+        </ContainerLi>
+        <ContainerLi>
+          {' '}
+          <NavLink to="/book">- Book -</NavLink>{' '}
+        </ContainerLi>
+        <ContainerLi>
+          {!isAuthenticated() ? (
+            <LoginButton {...props} />
+          ) : (
+            <LogoutButton {...props} />
+          )}
         </ContainerLi>
       </ContainerUl>
     </div>

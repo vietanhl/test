@@ -1,4 +1,4 @@
-import { put } from '../../../api/utils';
+import { put } from '../../../Api/utils';
 
 const usePutRequest = <RequestType, ResponseType = {}>(
   url: string,
