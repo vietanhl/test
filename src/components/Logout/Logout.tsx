@@ -1,4 +1,5 @@
-import React from "react";
+import React from 'react';
+import Button from 'react-bootstrap/Button';
 
 const Logout: React.FunctionComponent = (props: any) => {
   const { isAuthenticated, login } = props.auth;
@@ -6,7 +7,13 @@ const Logout: React.FunctionComponent = (props: any) => {
   return (
     <>
       {isAuthenticated() ? (
-        <button onClick={props.auth.logout}>Logout</button>
+        <Button
+          variant="outline-secondary"
+          size="lg"
+          onClick={props.auth.logout}
+        >
+          Logout
+        </Button>
       ) : null}
     </>
   );

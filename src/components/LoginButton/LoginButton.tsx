@@ -6,7 +6,13 @@ const LoginButton: React.FunctionComponent = (props: any) => {
   return (
     <>
       {!isAuthenticated() ? (
-        <Button onClick={props.auth.login}>Login</Button>
+        <Button
+          variant="outline-secondary"
+          size="lg"
+          onClick={props.auth.login}
+        >
+          Login
+        </Button>
       ) : null}
     </>
   );
