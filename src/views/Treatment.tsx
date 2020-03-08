@@ -11,7 +11,7 @@ const Treatment: React.FunctionComponent = () => {
   return (
     <Container>
       <PageTitle title="Available Treatments" />
-      <TreatmentCard />
+      {/* <TreatmentCard /> */}
     </Container>
   );
 };

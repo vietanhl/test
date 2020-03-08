@@ -36,11 +36,17 @@ app.get("/authorized", function (req, res) {
 });
 
 //private API
-app.get("/book", jwtCheck, (req, res) => {
+// app.get("/book", jwtCheck, (req, res) => {
+//   res.json({
+//     message: "hello from a book private API"
+//   });
+// });
+app.get("/book", (req, res) => {
   res.json({
     message: "hello from a book private API"
   });
 });
+
 
 //scope API
 app.get("/scopes", jwtCheck, checkScope(["read:customer"]), (req, res) => {

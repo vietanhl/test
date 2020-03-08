@@ -30,7 +30,10 @@ const TreatmentCard: React.FunctionComponent = (props: any) => {
         <CardTitle>{cardObject.title}</CardTitle>
         <CardSubtitle>{cardObject.price}</CardSubtitle>
         <CardText>{cardObject.description}</CardText>
-        <BookButton {...props}>Book Now</BookButton>
+        {/* title={cardObject.title} price={cardObject.price} description={cardObject.description}  */}
+        <BookButton treatment={cardObject} {...props}>
+          Book Now
+        </BookButton>
       </CardBody>
     </Card>,
   ];

@@ -8,6 +8,8 @@ import {
   TreatmentView,
   ContactView,
   LoginView,
+  BookView,
+  ConfirmationView,
 } from './views/LoadableView';
 import Footer from './components/Footer/Footer';
 import Auth from './Auth/auth';
@@ -53,25 +55,22 @@ const App = (props: any) => {
             <Route path="/treatment" component={TreatmentView} />
             <Route path="/contact" component={ContactView} />
             <Route path="/login" component={LoginView} />
+            <Route path="/book" component={BookView} />
+            <Route path="/confirmation" component={ConfirmationView} />
 
-            <Route
+            {/* <Route
               path="/book"
               component={(props: any) => {
                 return <Api auth={auth} {...props} />;
               }}
-            />
+            /> */}
             <Route
               path="/callback"
               component={(props: any) => {
                 return <Callback auth={auth} {...props} />;
               }}
             />
-            <Route
-              path="/confirmation"
-              component={(props: any) => {
-                return <ConfirmationPage auth={auth} {...props} />;
-              }}
-            />
+
             {/* <Route
               path="/scopes"
               component={(props: any) =>
