@@ -15,7 +15,7 @@ import {
 import Footer from './components/Footer/Footer';
 import Auth from './Auth/auth';
 import Callback from './components/Callback/Callback';
-import Api from './Api/Api';
+// import Api from './Api/Api';
 //add to view
 import ConfirmationPage from './views/Confirm';
 

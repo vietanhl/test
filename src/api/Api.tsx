@@ -1,12 +1,11 @@
 import React, { useState, useEffect } from 'react';
 import PageTitle from '../components/PageTitle';
-import Calendar from '../components/Calendar/Calendar';
 
 const Api: React.FunctionComponent = (props: any) => {
-  const [message, setMessage] = useState('');
-  const [privateMessage, setPrivateMessage] = useState('');
-  const [scopeMessage, setScopeMessage] = useState('');
-  const [adminMessage, setAdminMessage] = useState('');
+  // const [message, setMessage] = useState('');
+  // const [privateMessage, setPrivateMessage] = useState('');
+  // const [scopeMessage, setScopeMessage] = useState('');
+  // const [adminMessage, setAdminMessage] = useState('');
 
   //PUBLIC
   // const fetchPublicApi = () => {

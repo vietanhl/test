@@ -1,11 +1,10 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import styled from 'styled-components';
-// import OpeningHours from '../containers/openingHours/OpeningHoursContainer';
-import Calendar from '../components/Calendar/Calendar';
 import TreatmentButton from '../components/TreatmentButton/TreatmentButton';
 import Line from '../components/Line/Line';
-import LoginButton from '../components/LoginButton';
-import LogoutButton from '../components/Logout';
+// import LoginButton from '../components/LoginButton';
+// import LogoutButton from '../components/Logout';
+import * as api from '../containers/AvailabilityContainer/AvailabilityContainer';
 
 const Container = styled.div`
   text-align: center;
@@ -17,6 +16,15 @@ const Homepage = (props: any) => {
   const banner = require('../Images/spa-banner.jpg');
   const steps = require('../Images/steps.png');
   const { isAuthenticated } = props.auth;
+
+  useEffect(() => {
+    async function fetchMyApi() {
+      const res = await api.getAvailability('2020', '10', '22');
+      console.log(res);
+    }
+    fetchMyApi();
+    // console.log(response);
+  }, []);
 
   return (
     <Container>
