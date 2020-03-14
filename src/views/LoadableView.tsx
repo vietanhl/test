@@ -31,3 +31,8 @@ export const ConfirmationView = Loadable({
   loader: () => import('./Confirm'),
   loading: () => <Spinner color="dark" />,
 });
+
+export const OrderView = Loadable({
+  loader: () => import('./Order'),
+  loading: () => <Spinner color="dark" />,
+});

@@ -19,7 +19,7 @@ const Footer: React.FunctionComponent = () => {
     <StyledFooter>
       <Line />
       <StyledText>
-        <b>© Simply Book - January 2020</b>
+        <b>© Paper&Pen - January 2020</b>
         <br />
         Social media accounts linked here.
       </StyledText>

@@ -31,19 +31,15 @@ const Menu: React.FunctionComponent = (props: any) => {
       <ContainerUl>
         <ContainerLi>
           {' '}
-          <NavLink to="/home">[Simply Book]</NavLink>{' '}
+          <NavLink to="/home">Nail Story</NavLink>{' '}
         </ContainerLi>
         <ContainerLi>
           {' '}
-          <NavLink to="/treatment">- Treatments -</NavLink>{' '}
+          <NavLink to="/treatment">- Book Now -</NavLink>{' '}
         </ContainerLi>
         <ContainerLi>
           {' '}
           <NavLink to="/contact">- Contact -</NavLink>{' '}
-        </ContainerLi>
-        <ContainerLi>
-          {' '}
-          <NavLink to="/book">- Book -</NavLink>{' '}
         </ContainerLi>
         <ContainerLi>
           {!isAuthenticated() ? (
