@@ -1,23 +1,27 @@
 import axios from 'axios';
 import * as endpoints from '../../Api/endpoints';
-import { useState, useEffect } from 'react';
 
-export const getBooking = (id: any) => {
-  const [data, setData] = useState();
-  useEffect(() => {
-    const fetchData = async () => {
-      const result = await axios(`${endpoints.book}/AppointmentId/${id}`);
-      setData(result.data);
-    };
-    fetchData();
-  }, [id]);
-  return data;
+export const getBooking = async (id: any) => {
+  var response: any = null;
+
+  const fetchData = async () => {
+    await axios
+      .get(`${endpoints.book}/AppointmentId/${id}`)
+      .then(res => {
+        response = JSON.stringify(res.data);
+      })
+      .catch(error => {
+        console.log(error);
+      });
+  };
+  await fetchData();
+  return response;
 };
 
-export const createBooking = (year: any, month: any, day: any) => {
-  const [data, setData] = useState();
-  useEffect(() => {
-    axios
+export const createBooking = async (year: any, month: any, day: any) => {
+  var response: any = null;
+  const fetchData = async () => {
+    await axios
       .post(`${endpoints.book}/date/${year}/${month}/${day}/book`, {
         appointmentDetailsId: 0,
         clientAccountId: 0,
@@ -84,15 +88,14 @@ export const createBooking = (year: any, month: any, day: any) => {
           appointmentDetailsId: 0,
         },
       })
-      .then(
-        response => {
-          setData(response);
-          console.log(response);
-        },
-        error => {
-          console.log(error);
-        }
-      );
-  }, []);
-  return data;
+      .then(res => {
+        response = JSON.stringify(res.data);
+      })
+      .catch(error => {
+        console.log(error);
+      });
+  };
+  await fetchData();
+
+  return response;
 };
