@@ -49,3 +49,13 @@ button {
     align-items: center;
   }
 }
+
+p {
+  font-family: 'Courier New', Courier, monospace;
+  font-size: 1rem;
+}
+
+label {
+  font-family: 'Courier New', Courier, monospace;
+  font-size: 1rem;
+}

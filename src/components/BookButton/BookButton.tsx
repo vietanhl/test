@@ -5,6 +5,7 @@ import { BrowserRouter as Router, Route, Link } from 'react-router-dom';
 
 const BookButton: React.FunctionComponent = (props: any) => {
   console.log('treatment: ' + JSON.stringify(props));
+
   return (
     <>
       <Line />

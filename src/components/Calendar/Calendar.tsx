@@ -3,43 +3,14 @@ import DatePicker from 'react-datepicker';
 import 'react-datepicker/dist/react-datepicker.css';
 import ConfirmBookingButton from '../ConfirmBookingButton/ConfirmBookingButton';
 import Button from 'react-bootstrap/Button';
-import FormGroup from '@material-ui/core/FormGroup';
-import FormControlLabel from '@material-ui/core/FormControlLabel';
-import Checkbox from '@material-ui/core/Checkbox';
-import Favorite from '@material-ui/icons/Favorite';
-import FavoriteBorder from '@material-ui/icons/FavoriteBorder';
 import Grid from '@material-ui/core/Grid';
 
 const Calendar: React.FunctionComponent = (props: any) => {
   const [startDate, setStartDate] = useState();
   const [startTime, setStartTime] = useState();
   const [selectedStaff, setSelectedStaff] = useState();
-  const [staff, setStaff] = useState({
-    employee1: false,
-    employee2: false,
-    employee3: false,
-    employee4: false,
-  });
+  console.log(props);
 
-  const handleChange = (name: string) => (
-    event: React.ChangeEvent<HTMLInputElement>
-  ) => {
-    //TODO: Validation if an employee is already clicked
-    setStaff({ ...staff, [name]: event.target.checked });
-  };
-
-  useEffect(() => {
-    console.log('time: ' + startTime);
-    console.log('staff: ' + JSON.stringify(staff));
-    var newStaff = { ...staff };
-    var newSelectedStaff: any = [];
-    Object.entries(newStaff).forEach(entry => {
-      if (entry[1] === true) {
-        newSelectedStaff.push(entry[0]);
-      }
-    });
-    setSelectedStaff(newSelectedStaff);
-  }, [startTime, staff]);
   var today = new Date();
   var timeAvailable = [
     '10:00',
@@ -72,35 +43,9 @@ const Calendar: React.FunctionComponent = (props: any) => {
                 selected={startDate}
                 onChange={(date: any) => setStartDate(date)}
                 inline
+                minDate={new Date()}
+                showDisabledMonthNavigation
               />
-            </Grid>
-            <Grid item key={0}>
-              <FormGroup>
-                <FormControlLabel
-                  control={
-                    <Checkbox
-                      checked={staff.employee1}
-                      icon={<FavoriteBorder />}
-                      checkedIcon={<Favorite />}
-                      onChange={handleChange('employee1')}
-                      value="employee1"
-                    />
-                  }
-                  label="Employee 1"
-                />
-                <FormControlLabel
-                  control={
-                    <Checkbox
-                      checked={staff.employee2}
-                      icon={<FavoriteBorder />}
-                      checkedIcon={<Favorite />}
-                      onChange={handleChange('employee2')}
-                      value="employee2"
-                    />
-                  }
-                  label="Employee 2"
-                />
-              </FormGroup>
             </Grid>
           </Grid>
         </Grid>

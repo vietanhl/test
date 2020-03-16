@@ -8,7 +8,7 @@ export const getTreatments = async () => {
     await axios
       .get(`${endpoints.treatment}`)
       .then(res => {
-        response = JSON.stringify(res.data);
+        response = res.data;
       })
       .catch(error => {
         console.log(error);
