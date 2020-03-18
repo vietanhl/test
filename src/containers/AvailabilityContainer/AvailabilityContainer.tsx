@@ -18,23 +18,19 @@ export const getAvailability = async (year: any, month: any, day: any) => {
   return response;
 };
 
-export const getAvailabilityByTreatment = async (
-  year: any,
-  month: any,
-  day: any,
-  treatmentId: any
-) => {
+export const getAvailabilityByTreatment = async (date: string, id: any) => {
   var response: any = null;
   const fetchData = async () => {
     await axios
-      .get(
-        `${endpoints.availability}/date/${year}/${month}/${day}/treatment/${treatmentId}`
-      )
+      .post(`${endpoints.availability}/date/treatments`, {
+        treatments: id,
+        date: date,
+      })
       .then(res => {
-        response = JSON.stringify(res.data);
+        response = res.data;
       })
       .catch(error => {
-        console.log(error);
+        console.log('error: ' + error);
       });
   };
   await fetchData();

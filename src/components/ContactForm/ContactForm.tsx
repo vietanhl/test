@@ -28,6 +28,7 @@ const useStyles = makeStyles((theme: Theme) =>
 
 const ContactForm: React.FunctionComponent<State> = (props: any) => {
   const classes = useStyles();
+  console.log('contact form ' + JSON.stringify(props));
 
   // console.log('CONTACT FORM - ' + JSON.stringify(props.location.state));
   const [values, setValues] = React.useState<State>({

@@ -28,6 +28,7 @@ const useStyles = makeStyles((theme: Theme) =>
 
 const Service: React.FunctionComponent = (props: any) => {
   const [treatment, setTreatment] = useState();
+  const [treatmentName, setTreatmentName] = useState(['NoTreatmentAvailable']);
   useEffect(() => {
     async function fetchMyApi() {
       const res = await api.getTreatments();
@@ -75,7 +76,10 @@ const Service: React.FunctionComponent = (props: any) => {
                       checked={treatment.treatment1}
                       icon={<FavoriteBorder />}
                       checkedIcon={<Favorite />}
-                      onChange={handleChange(`${treatment[keyName].id}`)}
+                      onChange={handleChange(
+                        treatment[keyName].id,
+                        treatment[keyName].treatmentName
+                      )}
                       value="treatment1"
                     />
                   }
@@ -113,7 +117,7 @@ const Service: React.FunctionComponent = (props: any) => {
     }
   };
 
-  const [selectedTreatment, setSelectedTreatment] = useState(['treatments']);
+  const [selectedTreatment, setSelectedTreatment] = useState([0]);
   //   () => {
   //   if (treatment === null || treatment === undefined) {
   //     return null;
@@ -123,7 +127,7 @@ const Service: React.FunctionComponent = (props: any) => {
   //   });
   // }
 
-  const handleChange = (name: string) => (
+  const handleChange = (name: number, treatmentName: string) => (
     event: React.ChangeEvent<HTMLInputElement>
   ) => {
     // setSelectedTreatment({
@@ -140,11 +144,12 @@ const Service: React.FunctionComponent = (props: any) => {
     //   array.push(name);
     // }
     // setSelectedTreatment(array);
-    pushTreatments(name);
+    pushTreatments(name, treatmentName);
   };
 
-  const pushTreatments = (name: string) => {
-    var array: string[] = [...selectedTreatment];
+  const pushTreatments = (name: number, tName: string) => {
+    var array: number[] = [...selectedTreatment];
+    var treatmentNameArray: string[] = [...treatmentName];
     console.log(name);
     if (array.includes(name)) {
       var index = array.indexOf(name);
@@ -154,12 +159,26 @@ const Service: React.FunctionComponent = (props: any) => {
       array.push(name);
       console.log('added: ' + array);
     }
-    if (array.includes('treatments')) {
-      var index = array.indexOf('treatments');
+    if (array.includes(0)) {
+      var index = array.indexOf(0);
       array.splice(index, 1);
     }
     setSelectedTreatment(array);
-    // console.log(selectedTreatment);
+    // TODO: if treatment name is the same, we can fix this by calling the treatment/{id} endpoint
+    if (treatmentNameArray.includes(tName)) {
+      var index = treatmentNameArray.indexOf(tName);
+      treatmentNameArray.splice(index, 1);
+      console.log(treatmentNameArray);
+    } else {
+      treatmentNameArray.push(tName);
+      console.log(treatmentNameArray);
+    }
+    if (treatmentNameArray.includes('NoTreatmentAvailable')) {
+      var index = treatmentNameArray.indexOf('NoTreatmentAvailable');
+      treatmentNameArray.splice(index, 1);
+    }
+    console.log('ARRAY ' + treatmentNameArray);
+    setTreatmentName(treatmentNameArray);
   };
 
   // useEffect(() => {
@@ -216,7 +235,10 @@ const Service: React.FunctionComponent = (props: any) => {
                             checked={treatment.treatment1}
                             icon={<FavoriteBorder />}
                             checkedIcon={<Favorite />}
-                            onChange={handleChange(`${treatment[keyName].id}`)}
+                            onChange={handleChange(
+                              treatment[keyName].id,
+                              treatment[keyName].treatmentName
+                            )}
                             value={`${treatment[keyName].id}`}
                           />
                         }
@@ -254,7 +276,10 @@ const Service: React.FunctionComponent = (props: any) => {
                             checked={treatment.treatment1}
                             icon={<FavoriteBorder />}
                             checkedIcon={<Favorite />}
-                            onChange={handleChange(`${treatment[keyName].id}`)}
+                            onChange={handleChange(
+                              treatment[keyName].id,
+                              treatment[keyName].treatmentName
+                            )}
                             value={`${treatment[keyName].id}`}
                           />
                         }
@@ -292,7 +317,10 @@ const Service: React.FunctionComponent = (props: any) => {
                             checked={treatment.treatment1}
                             icon={<FavoriteBorder />}
                             checkedIcon={<Favorite />}
-                            onChange={handleChange(`${treatment[keyName].id}`)}
+                            onChange={handleChange(
+                              treatment[keyName].id,
+                              treatment[keyName].treatmentName
+                            )}
                             value={`${treatment[keyName].id}`}
                           />
                         }
@@ -330,7 +358,10 @@ const Service: React.FunctionComponent = (props: any) => {
                             checked={treatment.treatment1}
                             icon={<FavoriteBorder />}
                             checkedIcon={<Favorite />}
-                            onChange={handleChange(`${treatment[keyName].id}`)}
+                            onChange={handleChange(
+                              treatment[keyName].id,
+                              treatment[keyName].treatmentName
+                            )}
                             value={`${treatment[keyName].id}`}
                           />
                         }
@@ -344,7 +375,11 @@ const Service: React.FunctionComponent = (props: any) => {
             })
           : null}
       </ExpansionPanel>
-      <BookButton treatment={selectedTreatment} {...props}>
+      <BookButton
+        treatment={selectedTreatment}
+        treatmentName={treatmentName}
+        {...props}
+      >
         Book Now
       </BookButton>
     </>

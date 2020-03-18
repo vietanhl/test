@@ -13,8 +13,7 @@ const Order: React.FunctionComponent = (props: any) => {
   const treatment = property.treatment;
   const date = property.date.toString();
   const time = property.time;
-  const staff = property.staff;
-  //Price total
+  const treatmentName = property.treatmentName;
 
   return (
     <>
@@ -25,9 +24,7 @@ const Order: React.FunctionComponent = (props: any) => {
         {time} - {date}
       </p>
       <h4>Treatment</h4>
-      <p>{treatment}</p>
-      <h4>Staff</h4>
-      <p>{staff}</p>
+      <p>{treatmentName}</p>
       <h4>Phone</h4>
       <p>{phone}</p>
       <h4>Comments</h4>

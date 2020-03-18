@@ -1,6 +1,7 @@
 import React from 'react';
 import Button from 'react-bootstrap/Button';
 import { BrowserRouter as Router, Route, Link } from 'react-router-dom';
+import * as api from '../../containers/BookContainer/BookContainer';
 
 const OrderButton: React.FunctionComponent = (props: any) => {
   // console.log('ORDER BUTTON: ' + JSON.stringify(props.children.location.state));
@@ -14,7 +15,37 @@ const OrderButton: React.FunctionComponent = (props: any) => {
   const treatment = props.location.state.treatment;
   const date = props.location.state.date;
   const time = props.location.state.time;
-  const staff = props.location.state.staff;
+  const treatmentName = props.location.state.treatmentName;
+
+  const bookAppointment = () => {
+    const year = date.split('-')[0];
+    const month = date.split('-')[1];
+    const day = date.split('-')[2];
+    var x = api.createBooking(
+      year,
+      month,
+      day,
+      treatment,
+      time,
+      firstName,
+      lastName,
+      email,
+      phone
+    );
+    // Assertion on this response if successful.
+    console.log(x);
+    console.log(
+      year,
+      month,
+      day,
+      treatment,
+      time,
+      firstName,
+      lastName,
+      email,
+      phone
+    );
+  };
 
   return (
     <>
@@ -30,11 +61,11 @@ const OrderButton: React.FunctionComponent = (props: any) => {
             treatment: treatment,
             date: date,
             time: time,
-            staff: staff,
+            treatmentName: treatmentName,
           },
         }}
       >
-        <Button variant="outline-secondary" size="lg">
+        <Button variant="outline-secondary" size="lg" onClick={bookAppointment}>
           Book Now
         </Button>
       </Link>

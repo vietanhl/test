@@ -5,8 +5,11 @@ import { BrowserRouter as Router, Route, Link } from 'react-router-dom';
 
 const ConfirmBookingButton: React.FunctionComponent = (props: any) => {
   // console.log('CONFIRM - ' + JSON.stringify(props.location.state.treatment));
-  // console.log(JSON.stringify(props));
+  console.log('confirm button ' + JSON.stringify(props.location.state));
   // console.log(JSON.stringify(props.time));
+  const bookAppointment = () => {
+    //call api
+  };
   return (
     <>
       <Line />
@@ -17,11 +20,11 @@ const ConfirmBookingButton: React.FunctionComponent = (props: any) => {
             treatment: props.location.state.treatment,
             date: props.date,
             time: props.time,
-            staff: props.staff,
+            treatmentName: props.location.state.treatmentName,
           },
         }}
       >
-        <Button variant="outline-secondary" size="lg">
+        <Button variant="outline-secondary" size="lg" onClick={bookAppointment}>
           Confirm
         </Button>
       </Link>
