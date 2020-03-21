@@ -1,10 +1,9 @@
-import React, { useState, useEffect } from 'react';
+import React, { useEffect } from 'react';
 import { createStyles, makeStyles, Theme } from '@material-ui/core/styles';
 import TextField from '@material-ui/core/TextField';
 import FormGroup from '@material-ui/core/FormGroup';
 import FormControlLabel from '@material-ui/core/FormControlLabel';
 import Checkbox from '@material-ui/core/Checkbox';
-import OrderButton from '../OrderButton/OrderButton';
 
 interface State extends React.Props<any> {
   firstName: string;
@@ -52,7 +51,7 @@ const ContactForm: React.FunctionComponent<any> = (props: any) => {
   useEffect(() => {
     // console.log('FORM - ' + JSON.stringify(values));
     props.parentCallBack(values);
-  }, [values]);
+  }, [values, props]);
 
   return (
     <div>

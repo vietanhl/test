@@ -1,5 +1,4 @@
 import React, { useState, useEffect } from 'react';
-import BookButton from '../BookButton';
 import FormGroup from '@material-ui/core/FormGroup';
 import FormControlLabel from '@material-ui/core/FormControlLabel';
 import Checkbox from '@material-ui/core/Checkbox';
@@ -37,13 +36,7 @@ const Service: React.FunctionComponent<any> = (props: any) => {
     fetchMyApi();
   }, []);
 
-  useEffect(() => {
-    props.parentCallBack(selectedTreatment, treatmentName);
-  }, [treatment, treatmentName]);
-
-  const [selected, setSelected] = useState();
   const mapTreatments = () => {
-    const treatmentTypes: any[] = [];
     var listOfTreatmentTypes: any[] = [];
 
     if (treatment === null || treatment === undefined) {
@@ -106,22 +99,20 @@ const Service: React.FunctionComponent<any> = (props: any) => {
   }, [treatment]);
 
   const classes = useStyles();
-  // const [treatment, setTreatment] = useState({
-  //   treatment1: false,
-  //   treatment2: false,
-  // });
-  const [stateOfTreatment, setStateOfTreatment] = useState();
   const beforeTreatmentSelectionState = () => {
     if (treatment === null || treatment === undefined) {
       return null;
     } else {
       Object.keys(treatment).map((keyName, i) => {
-        // console.log(treatment[keyName].id);
+        return console.log(treatment[keyName].id);
       });
     }
   };
 
   const [selectedTreatment, setSelectedTreatment] = useState([0]);
+  useEffect(() => {
+    props.parentCallBack(selectedTreatment, treatmentName);
+  }, [treatment, treatmentName, props, selectedTreatment]);
   //   () => {
   //   if (treatment === null || treatment === undefined) {
   //     return null;
@@ -164,13 +155,13 @@ const Service: React.FunctionComponent<any> = (props: any) => {
       console.log('added: ' + array);
     }
     if (array.includes(0)) {
-      var index = array.indexOf(0);
+      index = array.indexOf(0);
       array.splice(index, 1);
     }
     setSelectedTreatment(array);
     // TODO: if treatment name is the same, we can fix this by calling the treatment/{id} endpoint
     if (treatmentNameArray.includes(tName)) {
-      var index = treatmentNameArray.indexOf(tName);
+      index = treatmentNameArray.indexOf(tName);
       treatmentNameArray.splice(index, 1);
       console.log(treatmentNameArray);
     } else {
@@ -178,7 +169,7 @@ const Service: React.FunctionComponent<any> = (props: any) => {
       console.log(treatmentNameArray);
     }
     if (treatmentNameArray.includes('NoTreatmentAvailable')) {
-      var index = treatmentNameArray.indexOf('NoTreatmentAvailable');
+      index = treatmentNameArray.indexOf('NoTreatmentAvailable');
       treatmentNameArray.splice(index, 1);
     }
     console.log('ARRAY ' + treatmentNameArray);
@@ -229,7 +220,7 @@ const Service: React.FunctionComponent<any> = (props: any) => {
         {treatment !== undefined
           ? Object.keys(treatment).map((keyName, i) => {
               // console.log(treatment[keyName]);
-              if (treatment[keyName].treatmentType === 0)
+              if (treatment[keyName].treatmentType === 0) {
                 return (
                   <ExpansionPanelDetails>
                     <FormGroup>
@@ -253,6 +244,9 @@ const Service: React.FunctionComponent<any> = (props: any) => {
                     </FormGroup>
                   </ExpansionPanelDetails>
                 );
+              } else {
+                return null;
+              }
             })
           : null}
       </ExpansionPanel>
@@ -270,7 +264,7 @@ const Service: React.FunctionComponent<any> = (props: any) => {
         {treatment !== undefined
           ? Object.keys(treatment).map((keyName, i) => {
               // console.log(treatment[keyName]);
-              if (treatment[keyName].treatmentType === 1)
+              if (treatment[keyName].treatmentType === 1) {
                 return (
                   <ExpansionPanelDetails>
                     <FormGroup>
@@ -294,6 +288,9 @@ const Service: React.FunctionComponent<any> = (props: any) => {
                     </FormGroup>
                   </ExpansionPanelDetails>
                 );
+              } else {
+                return null;
+              }
             })
           : null}
       </ExpansionPanel>
@@ -311,7 +308,7 @@ const Service: React.FunctionComponent<any> = (props: any) => {
         {treatment !== undefined
           ? Object.keys(treatment).map((keyName, i) => {
               // console.log(treatment[keyName]);
-              if (treatment[keyName].treatmentType === 2)
+              if (treatment[keyName].treatmentType === 2) {
                 return (
                   <ExpansionPanelDetails>
                     <FormGroup>
@@ -335,6 +332,9 @@ const Service: React.FunctionComponent<any> = (props: any) => {
                     </FormGroup>
                   </ExpansionPanelDetails>
                 );
+              } else {
+                return null;
+              }
             })
           : null}
       </ExpansionPanel>
@@ -352,7 +352,7 @@ const Service: React.FunctionComponent<any> = (props: any) => {
         {treatment !== undefined
           ? Object.keys(treatment).map((keyName, i) => {
               // console.log(treatment[keyName]);
-              if (treatment[keyName].treatmentType === 3)
+              if (treatment[keyName].treatmentType === 3) {
                 return (
                   <ExpansionPanelDetails>
                     <FormGroup>
@@ -376,16 +376,12 @@ const Service: React.FunctionComponent<any> = (props: any) => {
                     </FormGroup>
                   </ExpansionPanelDetails>
                 );
+              } else {
+                return null;
+              }
             })
           : null}
       </ExpansionPanel>
-      {/* <BookButton
-        treatment={selectedTreatment}
-        treatmentName={treatmentName}
-        {...props}
-      >
-        Book Now
-      </BookButton> */}
     </>
   );
 };

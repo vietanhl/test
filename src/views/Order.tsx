@@ -3,14 +3,12 @@ import PageTitle from '../components/PageTitle';
 
 const Order: React.FunctionComponent = (props: any) => {
   //TODO: Validation if props are not there
-  console.log('PROPS: ' + JSON.stringify(props));
 
   return (
     <>
       <PageTitle
         title={`Enjoy your treatment ${props.location.state.firstName}!`}
       />
-      <h1>Order Summary</h1>
       <h4>Appointment</h4>
       <p>
         {props.location.state.time} - {props.location.state.date}

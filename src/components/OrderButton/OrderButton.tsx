@@ -1,13 +1,9 @@
-import React, { useState } from 'react';
+import React from 'react';
 import Button from 'react-bootstrap/Button';
 import { BrowserRouter as Router, Route, Link } from 'react-router-dom';
 import * as api from '../../containers/BookContainer/BookContainer';
 
 const OrderButton: React.FunctionComponent = (props: any) => {
-  // console.log('ORDER BUTTON: ' + JSON.stringify(props.children.location.state));
-  console.log('Form from order: ' + JSON.stringify(props));
-  console.log('ORDER ' + JSON.stringify(props.location.state));
-
   const bookAppointment = () => {
     const year = props.location.state.date.split('-')[0];
     const month = props.location.state.date.split('-')[1];

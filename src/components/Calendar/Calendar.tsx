@@ -1,7 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import DatePicker from 'react-datepicker';
 import 'react-datepicker/dist/react-datepicker.css';
-import ConfirmBookingButton from '../ConfirmBookingButton/ConfirmBookingButton';
 import Button from 'react-bootstrap/Button';
 import Grid from '@material-ui/core/Grid';
 import * as api from '../../containers/AvailabilityContainer/AvailabilityContainer';
@@ -89,12 +88,6 @@ const Calendar: React.FunctionComponent<any> = (props: any) => {
           })}
         </Grid>
       </Grid>
-      {/* <ConfirmBookingButton
-        date={startDate}
-        time={startTime}
-        treatmentName={props.treatmentId}
-        {...props}
-      /> */}
     </>
   );
 };

@@ -13,17 +13,13 @@ const Confirm: React.FunctionComponent = (props: any) => {
     comments: '',
     terms: false,
   });
-  console.log(JSON.stringify(props));
+
   //TODO: Validation if props are not there
   var time = JSON.stringify(props.location.state.time);
   var date = JSON.stringify(props.location.state.date);
   var treatmentName = props.location.state.treatmentName;
   var treatmentId = props.location.state.treatmentId;
 
-  // console.log('treatment: ' + JSON.stringify(props.location.state.treatment));
-  // console.log('time: ' + JSON.stringify(props.location.state.time));
-  // console.log('date: ' + JSON.stringify(props.location.state.date));
-  // console.log('staff: ' + JSON.stringify(props.location.state.staff));
   const FormDetails = (formData: any) => {
     console.log(JSON.stringify(formData));
     setForm(formData);
