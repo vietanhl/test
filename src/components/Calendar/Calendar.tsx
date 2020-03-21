@@ -6,8 +6,9 @@ import Button from 'react-bootstrap/Button';
 import Grid from '@material-ui/core/Grid';
 import * as api from '../../containers/AvailabilityContainer/AvailabilityContainer';
 
-const Calendar: React.FunctionComponent = (props: any) => {
+const Calendar: React.FunctionComponent<any> = (props: any) => {
   console.log('CALENDAR - ' + JSON.stringify(props));
+  console.log('CALENDAR - ' + props.treatmentId);
   const [startDate, setStartDate] = useState(
     new Date().toISOString().split('T')[0]
   );
@@ -20,42 +21,32 @@ const Calendar: React.FunctionComponent = (props: any) => {
     async function fetchMyApi() {
       const res = await api.getAvailabilityByTreatment(
         new Date(startDate).toISOString(),
-        props.location.state.treatment
+        props.treatmentId
       );
-
       if (res.length !== 0) {
         availableTimes(res);
       }
     }
-    fetchMyApi();
-  }, [startDate, props.location.state.treatment]);
+    if (props.treatmentId !== undefined) {
+      fetchMyApi();
+    }
+  }, [startDate, props.treatmentId]);
+
+  useEffect(() => {
+    props.parentCallBack(startDate, startTime);
+  }, [startDate, startTime]);
+
   var today = new Date();
   const availableTimes = (res: any) => {
-    const arrayOfTimes = res.map((x: string) => {
-      return x.split('T')[1].slice(0, -9);
-    });
-    setAvailableTime(arrayOfTimes);
-    console.log(arrayOfTimes);
+    if (res.length !== 0) {
+      const arrayOfTimes = res.map((x: string) => {
+        return x.split('T')[1].slice(0, -9);
+      });
+      setAvailableTime(arrayOfTimes);
+      console.log(arrayOfTimes);
+    }
   };
-  var timeAvailable = [
-    '10:00',
-    '10:30',
-    '11:00',
-    '11:30',
-    '12:00',
-    '12:30',
-    '13:00',
-    '13:30',
-    '14:00',
-    '14:30',
-    '15:00',
-    '15:30',
-    '16:00',
-    '16:30',
-    '17:00',
-    '17:30',
-    '18:00',
-  ];
+
   useEffect(() => {
     if (startDate === undefined) {
     } else {
@@ -98,12 +89,12 @@ const Calendar: React.FunctionComponent = (props: any) => {
           })}
         </Grid>
       </Grid>
-      <ConfirmBookingButton
+      {/* <ConfirmBookingButton
         date={startDate}
         time={startTime}
-        treatmentName={props.location.state.treatmentName}
+        treatmentName={props.treatmentId}
         {...props}
-      />
+      /> */}
     </>
   );
 };

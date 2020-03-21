@@ -3,33 +3,27 @@ import PageTitle from '../components/PageTitle';
 
 const Order: React.FunctionComponent = (props: any) => {
   //TODO: Validation if props are not there
-  console.log('PROPS: ' + JSON.stringify(props.location.state));
-  const property = props.location.state;
-  const firstName = property.firstName;
-  const lastName = property.lastName;
-  const email = property.email;
-  const phone = property.phone;
-  const comments = property.comments;
-  const treatment = property.treatment;
-  const date = property.date.toString();
-  const time = property.time;
-  const treatmentName = property.treatmentName;
+  console.log('PROPS: ' + JSON.stringify(props));
 
   return (
     <>
-      <PageTitle title={`Enjoy your treatment ${firstName}!`} />
+      <PageTitle
+        title={`Enjoy your treatment ${props.location.state.firstName}!`}
+      />
       <h1>Order Summary</h1>
       <h4>Appointment</h4>
       <p>
-        {time} - {date}
+        {props.location.state.time} - {props.location.state.date}
       </p>
       <h4>Treatment</h4>
-      <p>{treatmentName}</p>
+      <p>{props.location.state.treatmentName}</p>
       <h4>Phone</h4>
-      <p>{phone}</p>
+      <p>{props.location.state.phone}</p>
       <h4>Comments</h4>
-      <p>{comments}</p>
-      <p>Confirmation has been sent to your email {email}</p>
+      <p>{props.comments}</p>
+      <p>
+        Confirmation has been sent to your email {props.location.state.email}
+      </p>
     </>
   );
 };

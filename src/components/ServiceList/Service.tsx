@@ -26,7 +26,7 @@ const useStyles = makeStyles((theme: Theme) =>
   })
 );
 
-const Service: React.FunctionComponent = (props: any) => {
+const Service: React.FunctionComponent<any> = (props: any) => {
   const [treatment, setTreatment] = useState();
   const [treatmentName, setTreatmentName] = useState(['NoTreatmentAvailable']);
   useEffect(() => {
@@ -36,6 +36,10 @@ const Service: React.FunctionComponent = (props: any) => {
     }
     fetchMyApi();
   }, []);
+
+  useEffect(() => {
+    props.parentCallBack(selectedTreatment, treatmentName);
+  }, [treatment, treatmentName]);
 
   const [selected, setSelected] = useState();
   const mapTreatments = () => {
@@ -375,13 +379,13 @@ const Service: React.FunctionComponent = (props: any) => {
             })
           : null}
       </ExpansionPanel>
-      <BookButton
+      {/* <BookButton
         treatment={selectedTreatment}
         treatmentName={treatmentName}
         {...props}
       >
         Book Now
-      </BookButton>
+      </BookButton> */}
     </>
   );
 };
