@@ -1,5 +1,4 @@
 import React from 'react';
-import Line from '../Line/Line';
 import { Calendar, momentLocalizer } from 'react-big-calendar';
 import moment from 'moment';
 import 'react-big-calendar/lib/css/react-big-calendar.css';
@@ -58,8 +57,13 @@ const AdminCalendar: React.FunctionComponent = (props: any) => {
             18
           )
         }
-        // step={15}
         step={12}
+        eventPropGetter={(event: any) => ({
+          style: {
+            backgroundColor: event.id === 15 ? '#3174ad' : '#ad4ca4',
+            width: '10%',
+          },
+        })}
       />
     </div>
   );

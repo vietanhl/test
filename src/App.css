@@ -59,3 +59,51 @@ label {
   font-family: 'Courier New', Courier, monospace;
   font-size: 1rem;
 }
+
+/* Admin Calendar CSS */
+
+.rbc-calendar {
+  font-family: 'Courier New', Courier, monospace;
+  font-weight: bold;
+}
+
+.rbc-day-slot .rbc-time-slot {
+  border: unset;
+}
+
+.rbc-timeslot-group:nth-child(4n+1) {
+  background-color: lightslategray;
+  border-width: 0px;
+  margin: 0;
+  padding: 0;
+  border-color: black;
+}
+
+.rbc-timeslot-group:nth-child(4n+2) {
+  background-color: white;
+  border-width: 0px;
+  margin: 0;
+  padding: 0;
+  border-color: black;
+}
+
+.rbc-timeslot-group:nth-child(4n+3) {
+  background-color: lightslategray;
+  border-width: 0px;
+  margin: 0;
+  padding: 0;
+  border-color: black;
+}
+
+.rbc-timeslot-group:nth-child(4n+4) {
+  /* or 4n+1 */
+  background-color: white;
+  border-width: 0px;
+  margin: 0;
+  padding: 0;
+  border-color: black;
+}
+
+.rbc-timeslot-group:nth-child(n) {
+  border-top: 1px solid #ccc;
+}
