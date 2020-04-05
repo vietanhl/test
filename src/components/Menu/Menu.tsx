@@ -3,6 +3,7 @@ import styled from 'styled-components';
 import { NavLink } from 'react-router-dom';
 import LoginButton from '../LoginButton';
 import LogoutButton from '../Logout';
+import { companyName } from '../../config/merchantConfig/config';
 
 const ContainerUl = styled.ul`
   padding-top: 20px;
@@ -31,15 +32,21 @@ const Menu: React.FunctionComponent = (props: any) => {
       <ContainerUl>
         <ContainerLi>
           {' '}
-          <NavLink to="/home">Paper&Pen</NavLink>{' '}
+          <NavLink className="link" to="/home">
+            {companyName}
+          </NavLink>{' '}
         </ContainerLi>
         <ContainerLi>
           {' '}
-          <NavLink to="/treatment">Book Now</NavLink>{' '}
+          <NavLink className="link" to="/treatment">
+            Book Now
+          </NavLink>{' '}
         </ContainerLi>
         <ContainerLi>
           {' '}
-          <NavLink to="/contact">Contact</NavLink>{' '}
+          <NavLink className="link" to="/contact">
+            Contact
+          </NavLink>{' '}
         </ContainerLi>
         <ContainerLi>
           {!isAuthenticated() ? (

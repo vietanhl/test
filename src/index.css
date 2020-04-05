@@ -33,3 +33,9 @@ input {
   font-size: 1rem;
 
 }
+
+a:hover {
+  font-family: 'Courier New', Courier, monospace;
+  font-size: 1rem;
+  color: #282c34;
+}

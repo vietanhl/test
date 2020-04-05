@@ -3,6 +3,8 @@ import PageTitle from '../components/PageTitle';
 import styled from 'styled-components';
 import Menu from '../components/Menu';
 import Auth from '../Auth/auth';
+import { companyPhone, instagram } from '../config/merchantConfig/config';
+import Line from '../components/Line/Line';
 
 const ContainerUl = styled.div`
   text-align: center;
@@ -15,6 +17,7 @@ const ContainerLi = styled.li`
 
   &:hover {
     font-weight: bold;
+    color: black;
   }
 `;
 
@@ -28,9 +31,14 @@ const Contact: React.FunctionComponent = (props: any) => {
         <PageTitle title="Contact us" />
         <ContainerLi>
           <p>Phone</p>
+          <p>{companyPhone}</p>
+          <Line />
         </ContainerLi>
         <ContainerLi>
-          <p>Instagram</p>
+          <a href={instagram} className="link">
+            Instagram
+          </a>
+          <Line />
         </ContainerLi>
       </ContainerUl>
     </>

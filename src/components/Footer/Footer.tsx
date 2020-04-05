@@ -1,6 +1,7 @@
 import React from 'react';
 import Line from '../Line/Line';
 import styled from 'styled-components';
+import { companyName } from '../../config/merchantConfig/config';
 
 const StyledFooter = styled.div`
   text-align: center;
@@ -19,9 +20,7 @@ const Footer: React.FunctionComponent = () => {
     <StyledFooter>
       <Line />
       <StyledText>
-        <b>© Paper&Pen - January 2020</b>
-        <br />
-        Social media accounts linked here.
+        <b>© {companyName} - January 2020</b>
       </StyledText>
     </StyledFooter>
   );
