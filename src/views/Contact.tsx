@@ -1,6 +1,8 @@
 import React from 'react';
 import PageTitle from '../components/PageTitle';
 import styled from 'styled-components';
+import Menu from '../components/Menu';
+import Auth from '../Auth/auth';
 
 const ContainerUl = styled.div`
   text-align: center;
@@ -16,17 +18,22 @@ const ContainerLi = styled.li`
   }
 `;
 
-const Contact: React.FunctionComponent = () => {
+const Contact: React.FunctionComponent = (props: any) => {
+  const auth = new Auth(props.history);
+
   return (
-    <ContainerUl>
-      <PageTitle title="Contact us" />
-      <ContainerLi>
-        <p>Phone</p>
-      </ContainerLi>
-      <ContainerLi>
-        <p>Instagram</p>
-      </ContainerLi>
-    </ContainerUl>
+    <>
+      <Menu auth={auth} {...props} />
+      <ContainerUl>
+        <PageTitle title="Contact us" />
+        <ContainerLi>
+          <p>Phone</p>
+        </ContainerLi>
+        <ContainerLi>
+          <p>Instagram</p>
+        </ContainerLi>
+      </ContainerUl>
+    </>
   );
 };
 

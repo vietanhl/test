@@ -1,12 +1,17 @@
 import React from 'react';
 import PageTitle from '../components/PageTitle';
 import Stepper from '../components/Stepper/Stepper';
+import Menu from '../components/Menu';
+import Auth from '../Auth/auth';
 
 const Order: React.FunctionComponent = (props: any) => {
   //TODO: Validation if props are not there
+  const auth = new Auth(props.history);
+  // const { isAuthenticated } = props.auth;
 
   return (
     <>
+      <Menu auth={auth} {...props} />
       <Stepper />
       <PageTitle
         title={`Enjoy your treatment ${props.location.state.firstName}!`}
