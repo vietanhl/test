@@ -1,10 +1,10 @@
-import React from "react";
-import PageTitle from "../components/PageTitle";
-import styled from "styled-components";
+import React from 'react';
+import PageTitle from '../components/PageTitle';
+import styled from 'styled-components';
 
 const ContainerUl = styled.div`
   text-align: center;
-  font-family: "Courier New", Courier, monospace;
+  font-family: 'Courier New', Courier, monospace;
 `;
 
 const ContainerLi = styled.li`

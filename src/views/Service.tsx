@@ -1,7 +1,8 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import BookButton from '../components/BookButton';
 import PageTitle from '../components/PageTitle';
 import TreatmentList from '../components/ServiceList';
+import Stepper from '../components/Stepper/Stepper';
 
 const Service: React.FunctionComponent = (props: any) => {
   const [treatmentId, setTreatmentId] = useState();
@@ -11,11 +12,15 @@ const Service: React.FunctionComponent = (props: any) => {
     setTreatmentId(treatmentId);
     setTreatmentName(treatmentName);
   };
+  useEffect(() => {
+    console.log('Treatments: ' + JSON.stringify(props));
+  }, []);
 
   return (
     <div>
+      <Stepper />
       <PageTitle title="Available Treatments" />
-      <TreatmentList parentCallBack={treatmentSelected} />
+      <TreatmentList parentCallBack={treatmentSelected} {...props} />
       <BookButton
         treatmentId={treatmentId}
         treatmentName={treatmentName}

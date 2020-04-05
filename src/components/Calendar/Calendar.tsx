@@ -6,8 +6,8 @@ import Grid from '@material-ui/core/Grid';
 import * as api from '../../containers/AvailabilityContainer/AvailabilityContainer';
 
 const Calendar: React.FunctionComponent<any> = (props: any) => {
-  console.log('CALENDAR - ' + JSON.stringify(props));
-  console.log('CALENDAR - ' + props.treatmentId);
+  // console.log('CALENDAR - ' + JSON.stringify(props));
+  // console.log('CALENDAR - ' + props.treatmentId);
   const [startDate, setStartDate] = useState(
     new Date().toISOString().split('T')[0]
   );

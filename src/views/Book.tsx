@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import PageTitle from '../components/PageTitle';
 import Calendar from '../components/Calendar/Calendar';
 import ConfirmBookingButton from '../components/ConfirmBookingButton/ConfirmBookingButton';
+import Stepper from '../components/Stepper/Stepper';
 
 const Book: React.FunctionComponent = (props: any) => {
   const [date, setDate] = useState();
@@ -14,6 +15,7 @@ const Book: React.FunctionComponent = (props: any) => {
 
   return (
     <>
+      <Stepper />
       <PageTitle title="Select an appointment time" />
       <Calendar
         treatmentId={props.location.state.treatmentId}

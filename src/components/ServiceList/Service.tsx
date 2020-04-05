@@ -36,6 +36,17 @@ const Service: React.FunctionComponent<any> = (props: any) => {
     fetchMyApi();
   }, []);
 
+  // Saving the information when navigating back
+  // useEffect(() => {
+  //   console.log(
+  //     'inside service: ' + JSON.stringify(props.history.location.state)
+  //   );
+  //   if (props.history.location.state.treatmentId !== undefined) {
+  //     setSelectedTreatment(props.history.location.state.treatmentId);
+  //     setTreatmentName(props.history.location.state.treatmentName);
+  //   }
+  // }, [props]);
+
   const mapTreatments = () => {
     var listOfTreatmentTypes: any[] = [];
 

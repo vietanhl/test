@@ -38,7 +38,7 @@ const App = (props: any) => {
     <Container>
       <Header>
         <BrowserRouter>
-          <Menu auth={auth} {...props} />
+          {/* <Menu auth={auth} {...props} /> */}
           <Switch>
             <Route
               exact

@@ -1,11 +1,13 @@
 import React from 'react';
 import PageTitle from '../components/PageTitle';
+import Stepper from '../components/Stepper/Stepper';
 
 const Order: React.FunctionComponent = (props: any) => {
   //TODO: Validation if props are not there
 
   return (
     <>
+      <Stepper />
       <PageTitle
         title={`Enjoy your treatment ${props.location.state.firstName}!`}
       />

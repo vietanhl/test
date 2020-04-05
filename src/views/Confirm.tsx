@@ -3,6 +3,7 @@ import PageTitle from '../components/PageTitle';
 import Form from '../components/ContactForm';
 import Line from '../components/Line/Line';
 import OrderButton from '../components/OrderButton/OrderButton';
+import Stepper from '../components/Stepper/Stepper';
 
 const Confirm: React.FunctionComponent = (props: any) => {
   const [form, setForm] = useState({
@@ -27,7 +28,9 @@ const Confirm: React.FunctionComponent = (props: any) => {
 
   return (
     <div>
+      <Stepper />
       <PageTitle title="Contact details" />
+
       <h1> Order Summary </h1>
       <p>
         {date} - {time}
