@@ -24,18 +24,33 @@ const ContainerLi = styled.li`
     color: #282c34;
   }
 `;
+const ContainerLogo = styled.li`
+  display: inline;
+  padding-right: 50px;
+  text-align: left;
+
+  &:hover {
+    color: #282c34;
+  }
+`;
 
 const Menu: React.FunctionComponent = (props: any) => {
   const { isAuthenticated } = props.auth;
   return (
     <div>
       <ContainerUl>
-        <ContainerLi>
+        <ContainerLogo>
           {' '}
           <NavLink className="link" to="/home">
             {companyName}
           </NavLink>{' '}
-        </ContainerLi>
+        </ContainerLogo>
+        <ContainerLogo>
+          {' '}
+          <NavLink className="link" to="/home">
+            {companyName}
+          </NavLink>{' '}
+        </ContainerLogo>
         <ContainerLi>
           {' '}
           <NavLink className="link" to="/treatment">
