@@ -16,6 +16,9 @@ const useStyles = makeStyles((theme: Theme) =>
       marginTop: theme.spacing(1),
       marginBottom: theme.spacing(1),
     },
+    body: {
+      fontFamily: 'Abril Fatface',
+    },
   })
 );
 
@@ -56,7 +59,9 @@ export default function HorizontalLabelPositionBelowStepper() {
       <Stepper activeStep={activeStep} alternativeLabel>
         {steps.map((label) => (
           <Step key={label}>
-            <StepLabel>{label}</StepLabel>
+            <StepLabel classes={{ alternativeLabel: classes.body }}>
+              {label}
+            </StepLabel>
           </Step>
         ))}
       </Stepper>
