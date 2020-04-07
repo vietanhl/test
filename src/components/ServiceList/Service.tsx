@@ -18,7 +18,6 @@ import Typography from '@material-ui/core/Typography';
 import ExpandMoreIcon from '@material-ui/icons/ExpandMore';
 import * as api from '../../containers/TreatmentContainer/TreatmentContainer';
 import Divider from '@material-ui/core/Divider';
-import { light } from '@material-ui/core/styles/createPalette';
 
 const useStyles = makeStyles((theme: Theme) =>
   createStyles({
