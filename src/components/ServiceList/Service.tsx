@@ -4,7 +4,13 @@ import FormControlLabel from '@material-ui/core/FormControlLabel';
 import Checkbox from '@material-ui/core/Checkbox';
 import Favorite from '@material-ui/icons/Favorite';
 import FavoriteBorder from '@material-ui/icons/FavoriteBorder';
-import { Theme, createStyles, makeStyles } from '@material-ui/core/styles';
+import { ThemeProvider } from '@material-ui/styles';
+import {
+  Theme,
+  createStyles,
+  makeStyles,
+  createMuiTheme,
+} from '@material-ui/core/styles';
 import ExpansionPanel from '@material-ui/core/ExpansionPanel';
 import ExpansionPanelSummary from '@material-ui/core/ExpansionPanelSummary';
 import ExpansionPanelDetails from '@material-ui/core/ExpansionPanelDetails';
@@ -12,6 +18,7 @@ import Typography from '@material-ui/core/Typography';
 import ExpandMoreIcon from '@material-ui/icons/ExpandMore';
 import * as api from '../../containers/TreatmentContainer/TreatmentContainer';
 import Divider from '@material-ui/core/Divider';
+import { light } from '@material-ui/core/styles/createPalette';
 
 const useStyles = makeStyles((theme: Theme) =>
   createStyles({
@@ -26,6 +33,14 @@ const useStyles = makeStyles((theme: Theme) =>
     },
   })
 );
+
+const theme = createMuiTheme({
+  typography: {
+    body1: {
+      fontFamily: 'Abril Fatface',
+    },
+  },
+});
 
 const Service: React.FunctionComponent<any> = (props: any) => {
   const [treatment, setTreatment] = useState();
@@ -219,182 +234,185 @@ const Service: React.FunctionComponent<any> = (props: any) => {
   // }, []);
   return (
     <>
-      {mapTreatments}
-      <ExpansionPanel defaultExpanded={true}>
-        <ExpansionPanelSummary
-          expandIcon={<ExpandMoreIcon />}
-          aria-controls="panel1a-content"
-          id="panel1a-header"
-        >
-          <Typography className={classes.heading}>
-            List of treatments #1
-          </Typography>
-        </ExpansionPanelSummary>
-        {treatment !== undefined
-          ? Object.keys(treatment).map((keyName, i) => {
-              // console.log(treatment[keyName]);
-              if (treatment[keyName].treatmentType === 0) {
-                return (
-                  <ExpansionPanelDetails>
-                    <FormGroup>
-                      <FormControlLabel
-                        control={
-                          <Checkbox
-                            checked={treatment.treatment1}
-                            icon={<FavoriteBorder />}
-                            checkedIcon={<Favorite />}
-                            onChange={handleChange(
-                              treatment[keyName].id,
-                              treatment[keyName].treatmentName
-                            )}
-                            value={`${treatment[keyName].id}`}
-                          />
-                        }
-                        label={`${treatment[keyName].treatmentName}`}
-                      />
-                      <p>{`£${treatment[keyName].price} - ${treatment[keyName].duration}mins`}</p>
-                      <Divider />
-                    </FormGroup>
-                  </ExpansionPanelDetails>
-                );
-              } else {
-                return null;
-              }
-            })
-          : null}
-      </ExpansionPanel>
-      {/* Panel 2 */}
-      <ExpansionPanel>
-        <ExpansionPanelSummary
-          expandIcon={<ExpandMoreIcon />}
-          aria-controls="panel1a-content"
-          id="panel1a-header"
-        >
-          <Typography className={classes.heading}>
-            List of treatments #2
-          </Typography>
-        </ExpansionPanelSummary>
-        {treatment !== undefined
-          ? Object.keys(treatment).map((keyName, i) => {
-              // console.log(treatment[keyName]);
-              if (treatment[keyName].treatmentType === 1) {
-                return (
-                  <ExpansionPanelDetails>
-                    <FormGroup>
-                      <FormControlLabel
-                        control={
-                          <Checkbox
-                            checked={treatment.treatment1}
-                            icon={<FavoriteBorder />}
-                            checkedIcon={<Favorite />}
-                            onChange={handleChange(
-                              treatment[keyName].id,
-                              treatment[keyName].treatmentName
-                            )}
-                            value={`${treatment[keyName].id}`}
-                          />
-                        }
-                        label={`${treatment[keyName].treatmentName}`}
-                      />
-                      <p>{`£${treatment[keyName].price} - ${treatment[keyName].duration}mins`}</p>
-                      <Divider />
-                    </FormGroup>
-                  </ExpansionPanelDetails>
-                );
-              } else {
-                return null;
-              }
-            })
-          : null}
-      </ExpansionPanel>
-      {/* PANEL 3 */}
-      <ExpansionPanel>
-        <ExpansionPanelSummary
-          expandIcon={<ExpandMoreIcon />}
-          aria-controls="panel1a-content"
-          id="panel1a-header"
-        >
-          <Typography className={classes.heading}>
-            List of treatments #3
-          </Typography>
-        </ExpansionPanelSummary>
-        {treatment !== undefined
-          ? Object.keys(treatment).map((keyName, i) => {
-              // console.log(treatment[keyName]);
-              if (treatment[keyName].treatmentType === 2) {
-                return (
-                  <ExpansionPanelDetails>
-                    <FormGroup>
-                      <FormControlLabel
-                        control={
-                          <Checkbox
-                            checked={treatment.treatment1}
-                            icon={<FavoriteBorder />}
-                            checkedIcon={<Favorite />}
-                            onChange={handleChange(
-                              treatment[keyName].id,
-                              treatment[keyName].treatmentName
-                            )}
-                            value={`${treatment[keyName].id}`}
-                          />
-                        }
-                        label={`${treatment[keyName].treatmentName}`}
-                      />
-                      <p>{`£${treatment[keyName].price} - ${treatment[keyName].duration}mins`}</p>
-                      <Divider />
-                    </FormGroup>
-                  </ExpansionPanelDetails>
-                );
-              } else {
-                return null;
-              }
-            })
-          : null}
-      </ExpansionPanel>
-      {/* PANEL 4 */}
-      <ExpansionPanel>
-        <ExpansionPanelSummary
-          expandIcon={<ExpandMoreIcon />}
-          aria-controls="panel1a-content"
-          id="panel1a-header"
-        >
-          <Typography className={classes.heading}>
-            List of treatments #4
-          </Typography>
-        </ExpansionPanelSummary>
-        {treatment !== undefined
-          ? Object.keys(treatment).map((keyName, i) => {
-              // console.log(treatment[keyName]);
-              if (treatment[keyName].treatmentType === 3) {
-                return (
-                  <ExpansionPanelDetails>
-                    <FormGroup>
-                      <FormControlLabel
-                        control={
-                          <Checkbox
-                            checked={treatment.treatment1}
-                            icon={<FavoriteBorder />}
-                            checkedIcon={<Favorite />}
-                            onChange={handleChange(
-                              treatment[keyName].id,
-                              treatment[keyName].treatmentName
-                            )}
-                            value={`${treatment[keyName].id}`}
-                          />
-                        }
-                        label={`${treatment[keyName].treatmentName}`}
-                      />
-                      <p>{`£${treatment[keyName].price} - ${treatment[keyName].duration}mins`}</p>
-                      <Divider />
-                    </FormGroup>
-                  </ExpansionPanelDetails>
-                );
-              } else {
-                return null;
-              }
-            })
-          : null}
-      </ExpansionPanel>
+      <ThemeProvider theme={theme}>
+        {mapTreatments}
+        <ExpansionPanel defaultExpanded={true}>
+          <ExpansionPanelSummary
+            expandIcon={<ExpandMoreIcon />}
+            aria-controls="panel1a-content"
+            id="panel1a-header"
+          >
+            <Typography className={classes.heading}>
+              List of treatments #1
+            </Typography>
+          </ExpansionPanelSummary>
+          {/* style={{ fontFamily: 'Abril Fatface' }} */}
+          {treatment !== undefined
+            ? Object.keys(treatment).map((keyName, i) => {
+                // console.log(treatment[keyName]);
+                if (treatment[keyName].treatmentType === 0) {
+                  return (
+                    <ExpansionPanelDetails>
+                      <FormGroup>
+                        <FormControlLabel
+                          control={
+                            <Checkbox
+                              checked={treatment.treatment1}
+                              icon={<FavoriteBorder />}
+                              checkedIcon={<Favorite />}
+                              onChange={handleChange(
+                                treatment[keyName].id,
+                                treatment[keyName].treatmentName
+                              )}
+                              value={`${treatment[keyName].id}`}
+                            />
+                          }
+                          label={`${treatment[keyName].treatmentName} `}
+                        />
+                        <p>{`£${treatment[keyName].price} - ${treatment[keyName].duration}mins`}</p>
+                        <Divider />
+                      </FormGroup>
+                    </ExpansionPanelDetails>
+                  );
+                } else {
+                  return null;
+                }
+              })
+            : null}
+        </ExpansionPanel>
+        {/* Panel 2 */}
+        <ExpansionPanel>
+          <ExpansionPanelSummary
+            expandIcon={<ExpandMoreIcon />}
+            aria-controls="panel1a-content"
+            id="panel1a-header"
+          >
+            <Typography className={classes.heading}>
+              List of treatments #2
+            </Typography>
+          </ExpansionPanelSummary>
+          {treatment !== undefined
+            ? Object.keys(treatment).map((keyName, i) => {
+                // console.log(treatment[keyName]);
+                if (treatment[keyName].treatmentType === 1) {
+                  return (
+                    <ExpansionPanelDetails>
+                      <FormGroup>
+                        <FormControlLabel
+                          control={
+                            <Checkbox
+                              checked={treatment.treatment1}
+                              icon={<FavoriteBorder />}
+                              checkedIcon={<Favorite />}
+                              onChange={handleChange(
+                                treatment[keyName].id,
+                                treatment[keyName].treatmentName
+                              )}
+                              value={`${treatment[keyName].id}`}
+                            />
+                          }
+                          label={`${treatment[keyName].treatmentName}`}
+                        />
+                        <p>{`£${treatment[keyName].price} - ${treatment[keyName].duration}mins`}</p>
+                        <Divider />
+                      </FormGroup>
+                    </ExpansionPanelDetails>
+                  );
+                } else {
+                  return null;
+                }
+              })
+            : null}
+        </ExpansionPanel>
+        {/* PANEL 3 */}
+        <ExpansionPanel>
+          <ExpansionPanelSummary
+            expandIcon={<ExpandMoreIcon />}
+            aria-controls="panel1a-content"
+            id="panel1a-header"
+          >
+            <Typography className={classes.heading}>
+              List of treatments #3
+            </Typography>
+          </ExpansionPanelSummary>
+          {treatment !== undefined
+            ? Object.keys(treatment).map((keyName, i) => {
+                // console.log(treatment[keyName]);
+                if (treatment[keyName].treatmentType === 2) {
+                  return (
+                    <ExpansionPanelDetails>
+                      <FormGroup>
+                        <FormControlLabel
+                          control={
+                            <Checkbox
+                              checked={treatment.treatment1}
+                              icon={<FavoriteBorder />}
+                              checkedIcon={<Favorite />}
+                              onChange={handleChange(
+                                treatment[keyName].id,
+                                treatment[keyName].treatmentName
+                              )}
+                              value={`${treatment[keyName].id}`}
+                            />
+                          }
+                          label={`${treatment[keyName].treatmentName}`}
+                        />
+                        <p>{`£${treatment[keyName].price} - ${treatment[keyName].duration}mins`}</p>
+                        <Divider />
+                      </FormGroup>
+                    </ExpansionPanelDetails>
+                  );
+                } else {
+                  return null;
+                }
+              })
+            : null}
+        </ExpansionPanel>
+        {/* PANEL 4 */}
+        <ExpansionPanel>
+          <ExpansionPanelSummary
+            expandIcon={<ExpandMoreIcon />}
+            aria-controls="panel1a-content"
+            id="panel1a-header"
+          >
+            <Typography className={classes.heading}>
+              List of treatments #4
+            </Typography>
+          </ExpansionPanelSummary>
+          {treatment !== undefined
+            ? Object.keys(treatment).map((keyName, i) => {
+                // console.log(treatment[keyName]);
+                if (treatment[keyName].treatmentType === 3) {
+                  return (
+                    <ExpansionPanelDetails>
+                      <FormGroup>
+                        <FormControlLabel
+                          control={
+                            <Checkbox
+                              checked={treatment.treatment1}
+                              icon={<FavoriteBorder />}
+                              checkedIcon={<Favorite />}
+                              onChange={handleChange(
+                                treatment[keyName].id,
+                                treatment[keyName].treatmentName
+                              )}
+                              value={`${treatment[keyName].id}`}
+                            />
+                          }
+                          label={`${treatment[keyName].treatmentName}`}
+                        />
+                        <p>{`£${treatment[keyName].price} - ${treatment[keyName].duration}mins`}</p>
+                        <Divider />
+                      </FormGroup>
+                    </ExpansionPanelDetails>
+                  );
+                } else {
+                  return null;
+                }
+              })
+            : null}
+        </ExpansionPanel>
+      </ThemeProvider>
     </>
   );
 };
