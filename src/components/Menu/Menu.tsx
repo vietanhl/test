@@ -45,12 +45,6 @@ const Menu: React.FunctionComponent = (props: any) => {
             {companyName}
           </NavLink>{' '}
         </ContainerLogo>
-        <ContainerLogo>
-          {' '}
-          <NavLink className="link" to="/home">
-            {companyName}
-          </NavLink>{' '}
-        </ContainerLogo>
         <ContainerLi>
           {' '}
           <NavLink className="link" to="/treatment">

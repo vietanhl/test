@@ -35,7 +35,7 @@ const App = (props: any) => {
   const auth = new Auth(props.history);
 
   return (
-    <Container>
+    <>
       <Header>
         <BrowserRouter>
           {/* <Menu auth={auth} {...props} /> */}
@@ -88,7 +88,7 @@ const App = (props: any) => {
         </BrowserRouter>
       </Header>
       <Footer />
-    </Container>
+    </>
   );
 };
 
