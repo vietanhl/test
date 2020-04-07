@@ -6,15 +6,15 @@ interface Props {
   title: string;
 }
 const Title = styled.div`
-  font-family: 'Courier New', Courier, monospace;
+  font-family: Abril Fatface, cursive;
   text-align: center;
-  font-weight: bold;
+  font-weight: lighter;
   font-size: calc(18px + 1vmin);
   margin-block-end: 1em;
 `;
 
 const PageTitle: React.FunctionComponent<Props> = ({ title }) => (
-  <Title>
+  <Title className="heading">
     <Line />
     {title}
     <Line />

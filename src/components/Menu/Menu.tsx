@@ -9,7 +9,7 @@ const ContainerUl = styled.ul`
   padding-top: 20px;
   text-align: center;
   list-style: none;
-  font-family: 'Courier New', Courier, monospace;
+  font-family: 'Abril Fatface', cursive;
 
   &:hover {
     color: #282c34;
@@ -41,7 +41,7 @@ const Menu: React.FunctionComponent = (props: any) => {
       <ContainerUl>
         <ContainerLogo>
           {' '}
-          <NavLink className="link" to="/home">
+          <NavLink className="heading" to="/home">
             {companyName}
           </NavLink>{' '}
         </ContainerLogo>

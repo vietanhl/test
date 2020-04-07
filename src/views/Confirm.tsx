@@ -31,13 +31,13 @@ const Confirm: React.FunctionComponent = (props: any) => {
       <Stepper />
       <PageTitle title="Contact details" />
 
-      <h1> Order Summary </h1>
+      <h1 className="heading"> Order Summary </h1>
       <p>
         {date} - {time}
       </p>
-      <h4>Treatment</h4>
+      <h4 className="heading">Treatment</h4>
       {treatmentName.map((x: string) => {
-        return <p>{x}</p>;
+        return <p>{x} </p>;
       })}
       <Line />
       <Form parentCallBack={FormDetails} />

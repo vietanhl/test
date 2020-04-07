@@ -4,7 +4,7 @@ import styled from 'styled-components';
 import TreatmentCard from '../components/TreatmentCard/TreatmentCard';
 
 const Container = styled.div`
-  font-family: 'Courier New', Courier, monospace;
+  font-family: 'Abril Fatface', cursive;
 `;
 
 const Treatment: React.FunctionComponent = () => {

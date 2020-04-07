@@ -14,7 +14,7 @@ const { SocialIcon } = require('react-social-icons');
 
 const ContainerUl = styled.div`
   text-align: center;
-  font-family: 'Courier New', Courier, monospace;
+  font-family: 'Abril Fatface', cursive;
 `;
 
 const ContainerLi = styled.li`
@@ -41,12 +41,12 @@ const Contact: React.FunctionComponent = (props: any) => {
       <ContainerUl>
         <PageTitle title="Contact us" />
         <ContainerLi>
-          <a>Address</a>
+          <a className="heading">Address</a>
           <p>{address}</p>
           <Line />
         </ContainerLi>
         <ContainerLi>
-          <p>Phone</p>
+          <p className="heading">Phone</p>
           <p>{companyPhone}</p>
           <Line />
         </ContainerLi>

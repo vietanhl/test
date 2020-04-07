@@ -11,7 +11,7 @@ const { SocialIcon } = require('react-social-icons');
 const StyledFooter = styled.div`
   text-align: center;
   list-style: none;
-  font-family: 'Courier New', Courier, monospace;
+  font-family: 'Abril Fatface', cursive;
   background-color: white;
   padding-bottom: 20px;
   padding-top: 20px;
