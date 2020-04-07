@@ -17,9 +17,11 @@ const useStyles = makeStyles((theme: Theme) =>
   createStyles({
     root: {
       width: '100%',
+      fontFamily: 'Abril Fatface',
     },
     heading: {
       fontSize: theme.typography.pxToRem(15),
+      fontFamily: 'Abril Fatface',
       fontWeight: theme.typography.fontWeightBold,
     },
   })
