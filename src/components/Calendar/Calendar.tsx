@@ -73,7 +73,7 @@ const Calendar: React.FunctionComponent<any> = (props: any) => {
         </Grid>
       </Grid>
       <br />
-      <Grid item xs={3} alignContent="center">
+      <Grid item xs={6} alignContent="center">
         <Grid item key={0}>
           {availableTime.map((timeSlot: any) => {
             return (
@@ -81,6 +81,7 @@ const Calendar: React.FunctionComponent<any> = (props: any) => {
                 variant="outline-secondary"
                 size="sm"
                 onClick={() => setStartTime(timeSlot)}
+                style={{ width: '8%', minWidth: '50px' }}
               >
                 {timeSlot}
               </Button>
