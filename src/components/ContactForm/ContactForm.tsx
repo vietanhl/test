@@ -21,6 +21,9 @@ const useStyles = makeStyles((theme: Theme) =>
         margin: theme.spacing(1),
         width: 200,
       },
+      input: {
+        fontFamily: 'Abril Fatface',
+      },
     },
   })
 );
@@ -71,7 +74,7 @@ const ContactForm: React.FunctionComponent<any> = (props: any) => {
           onChange={handleChange('lastName')}
         />
       </form>
-      <form className={classes.root} noValidate>
+      <form className={classes.root}>
         <TextField
           required
           id="standard-basic"
@@ -100,17 +103,19 @@ const ContactForm: React.FunctionComponent<any> = (props: any) => {
           onChange={handleChange('comments')}
         />
       </form>
+
       <FormGroup>
-        <FormControlLabel
-          control={
-            <Checkbox
-              onChange={handleClickTerms}
-              // value={false ? false : true}
-            />
-          }
-          label="I agree to the following cancellation policy:"
-        />
         <p>
+          <FormControlLabel
+            control={
+              <Checkbox
+                onChange={handleClickTerms}
+                // value={false ? false : true}
+              />
+            }
+            label=""
+          />
+          I agree to the following cancellation policy: <br />
           No cancellations or changes allowed within 24 hours of the appointment
         </p>
       </FormGroup>
