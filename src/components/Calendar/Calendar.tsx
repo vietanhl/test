@@ -82,6 +82,7 @@ const Calendar: React.FunctionComponent<any> = (props: any) => {
                 size="sm"
                 onClick={() => setStartTime(timeSlot)}
                 style={{ width: '8%', minWidth: '50px' }}
+                active={startTime === timeSlot ? true : false}
               >
                 {timeSlot}
               </Button>
