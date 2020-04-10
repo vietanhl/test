@@ -47,13 +47,13 @@ const Menu: React.FunctionComponent = (props: any) => {
         </ContainerLogo>
         <ContainerLi>
           {' '}
-          <NavLink className="link" to="/treatment">
+          <NavLink className="menu-heading" to="/treatment">
             Book Now
           </NavLink>{' '}
         </ContainerLi>
         <ContainerLi>
           {' '}
-          <NavLink className="link" to="/contact">
+          <NavLink className="menu-heading" to="/contact">
             Contact
           </NavLink>{' '}
         </ContainerLi>

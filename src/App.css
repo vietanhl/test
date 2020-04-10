@@ -91,10 +91,8 @@ label {
 
 .heading {
   font-family: 'Abril Fatface', cursive;
-  /* src: url('https://fonts.googleapis.com/css2?family=Abril+Fatface&display=swap'); */
   font-weight: bolder;
   display: swap;
-  /* font-weight: 900; */
   font-size: calc(18px + 1vmin);
   line-height: 1.27;
   max-width: 75rem;
@@ -110,6 +108,26 @@ label {
 
   cursor: pointer;
 }
+
+.menu-heading {
+  font-family: 'Abril Fatface', cursive;
+  font-weight: bolder;
+  font-size: calc(15px + 1vmin);
+  line-height: 1.27;
+  max-width: 75rem;
+}
+
+.menu-heading:hover {
+  font-family: 'Abril Fatface', cursive;
+  color: inherit;
+  font-size: calc(15px + 1vmin);
+  line-height: 1.27;
+  max-width: 75rem;
+  text-decoration: none;
+
+  cursor: pointer;
+}
+
 
 /* Admin Calendar CSS */
 
