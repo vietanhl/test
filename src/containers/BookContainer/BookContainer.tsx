@@ -1,5 +1,6 @@
 import axios from 'axios';
 import * as endpoints from '../../Api/endpoints';
+import { baseURL } from '../../config/merchantConfig/config';
 
 export const getBooking = async (id: any) => {
   var response: any = null;
@@ -7,10 +8,10 @@ export const getBooking = async (id: any) => {
   const fetchData = async () => {
     await axios
       .get(`${endpoints.book}/AppointmentId/${id}`)
-      .then(res => {
+      .then((res) => {
         response = JSON.stringify(res.data);
       })
-      .catch(error => {
+      .catch((error) => {
         console.log(error);
       });
   };
@@ -40,11 +41,12 @@ export const createBooking = async (
         email: email,
         contactNumber: contactNumber,
       })
-      .then(res => {
+      .then((res) => {
         response = JSON.stringify(res.data);
       })
-      .catch(error => {
+      .catch((error) => {
         console.log(error);
+        return window.location.replace(`${baseURL}/error`);
       });
   };
   await fetchData();

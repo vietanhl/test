@@ -1,4 +1,5 @@
 import axios from 'axios';
+import { baseURL } from '../../config/merchantConfig/config';
 
 export const sendConfirmationEmail = async (
   email: string,
@@ -23,6 +24,7 @@ export const sendConfirmationEmail = async (
       })
       .catch((error) => {
         console.log('error: ' + error);
+        return window.location.replace(`${baseURL}/error`);
       });
   };
   await fetchData();
