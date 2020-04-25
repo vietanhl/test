@@ -36,3 +36,8 @@ export const OrderView = Loadable({
   loader: () => import('./Order'),
   loading: () => <Spinner color="dark" />,
 });
+
+export const ErrorPageView = Loadable({
+  loader: () => import('./ErrorPage'),
+  loading: () => <Spinner color="dark" />,
+});

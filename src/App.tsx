@@ -11,6 +11,7 @@ import {
   BookView,
   ConfirmationView,
   OrderView,
+  ErrorPageView,
 } from './views/LoadableView';
 import Footer from './components/Footer/Footer';
 import Auth from './Auth/auth';
@@ -59,6 +60,7 @@ const App = (props: any) => {
             <Route path="/book" component={BookView} />
             <Route path="/confirmation" component={ConfirmationView} />
             <Route path="/order" component={OrderView} />
+            <Route path="*" component={ErrorPageView} />
 
             {/* <Route
               path="/book"
