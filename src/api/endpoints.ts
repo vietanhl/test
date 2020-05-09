@@ -1,10 +1,14 @@
 /* istanbul ignore file */
 import config from 'config';
-
+//Availability of treatments
 export const availability = `${config.API_BASE_URL}/availability`;
+//Book
 export const book = `${config.API_BASE_URL}/book`;
-export const employee = `${config.API_BASE_URL}/employee`;
-export const employeeTreatment = `${config.API_BASE_URL}/employeetreatment`;
-export const operatingTime = `${config.API_BASE_URL}/operatingtime`;
-export const treatment = `${config.API_BASE_URL}/treatment`;
-export const workSchedule = `${config.API_BASE_URL}/workschedule`;
+//Admin employee days and details on their availability
+export const employee = `${config.API_BASE_URL}/admin/employee`;
+// export const employeeTreatment = `${config.API_BASE_URL}/employeetreatment`;
+export const operatingTime = `${config.API_BASE_URL}/admin/operatinghours`;
+// Available treatments
+export const treatment = `${config.API_BASE_URL}/admin/treatment`;
+
+// export const workSchedule = `${config.API_BASE_URL}/workschedule`;

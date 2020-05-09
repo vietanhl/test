@@ -23,9 +23,9 @@ export const getAvailabilityByTreatment = async (date: string, id: any) => {
   var response: any = null;
   const fetchData = async () => {
     await axios
-      .post(`${endpoints.availability}/date/treatments`, {
-        treatments: id,
-        date: date,
+      .post(`${endpoints.availability}`, {
+        treatmentIds: id,
+        dateTime: date,
       })
       .then((res) => {
         response = res.data;

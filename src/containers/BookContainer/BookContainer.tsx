@@ -28,21 +28,27 @@ export const createBooking = async (
   firstName: string,
   lastName: string,
   email: string,
-  contactNumber: string
+  contactNumber: string,
+  comments: string
 ) => {
   var response: any = null;
   const fetchData = async () => {
     await axios
-      .post(`${endpoints.book}/date/${year}/${month}/${day}/book`, {
-        treatmentIds: treatmentIds,
-        startTime: startTime,
-        firstName: firstName,
-        lastName: lastName,
-        email: email,
-        contactNumber: contactNumber,
+      .post(`${endpoints.book}`, {
+        client: {
+          firstName: firstName,
+          lastName: lastName,
+          email: email,
+          phone: contactNumber,
+        },
+        treatmentId: treatmentIds,
+        date: `${year}-${month}-${day}`,
+        startTime: `${startTime}`,
+        notes: comments,
       })
       .then((res) => {
         response = JSON.stringify(res.data);
+        console.log(response);
       })
       .catch((error) => {
         console.log(error);

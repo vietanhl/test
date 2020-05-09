@@ -61,14 +61,14 @@ const ContactForm: React.FunctionComponent<any> = (props: any) => {
       <form className={classes.root} noValidate>
         <TextField
           required
-          id="standard-basic"
+          id="first-name"
           label="First name"
           value={values.firstName}
           onChange={handleChange('firstName')}
         />
         <TextField
           required
-          id="standard-basic"
+          id="last-name"
           label="Last name"
           value={values.lastName}
           onChange={handleChange('lastName')}
@@ -77,7 +77,7 @@ const ContactForm: React.FunctionComponent<any> = (props: any) => {
       <form className={classes.root}>
         <TextField
           required
-          id="standard-basic"
+          id="email"
           label="Email address"
           value={values.email}
           onChange={handleChange('email')}
@@ -86,7 +86,7 @@ const ContactForm: React.FunctionComponent<any> = (props: any) => {
       <form className={classes.root} noValidate>
         <TextField
           required
-          id="standard-basic"
+          id="phone"
           label="Phone number"
           value={values.phone}
           onChange={handleChange('phone')}
@@ -94,7 +94,7 @@ const ContactForm: React.FunctionComponent<any> = (props: any) => {
       </form>
       <form className={classes.root} noValidate>
         <TextField
-          id="outlined-multiline-static"
+          id="comments"
           label="Comments"
           multiline
           rows="4"
@@ -107,19 +107,13 @@ const ContactForm: React.FunctionComponent<any> = (props: any) => {
       <FormGroup>
         <p>
           <FormControlLabel
-            control={
-              <Checkbox
-                onChange={handleClickTerms}
-                // value={false ? false : true}
-              />
-            }
+            control={<Checkbox onChange={handleClickTerms} />}
             label=""
           />
           I agree to the following cancellation policy: <br />
           No cancellations or changes allowed within 24 hours of the appointment
         </p>
       </FormGroup>
-      {/* <OrderButton children={values} {...props} /> */}
     </div>
   );
 };

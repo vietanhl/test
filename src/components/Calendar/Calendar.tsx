@@ -39,7 +39,7 @@ const Calendar: React.FunctionComponent<any> = (props: any) => {
   const availableTimes = (res: any) => {
     if (res.length !== 0) {
       const arrayOfTimes = res.map((x: string) => {
-        return x.split('T')[1].slice(0, -9);
+        return x.split('T')[1].slice(0, 5);
       });
       setAvailableTime(arrayOfTimes);
       console.log(arrayOfTimes);

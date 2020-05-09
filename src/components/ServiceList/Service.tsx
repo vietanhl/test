@@ -48,6 +48,7 @@ const Service: React.FunctionComponent<any> = (props: any) => {
     async function fetchMyApi() {
       const res = await api.getTreatments();
       setTreatment(res);
+      // console.log('treatments: ' + res);
     }
     fetchMyApi();
   }, []);
@@ -241,15 +242,16 @@ const Service: React.FunctionComponent<any> = (props: any) => {
             aria-controls="panel1a-content"
             id="panel1a-header"
           >
-            <Typography className={classes.heading}>
-              List of treatments #1
-            </Typography>
+            <Typography className={classes.heading}>Natural Care</Typography>
           </ExpansionPanelSummary>
           {/* style={{ fontFamily: 'Abril Fatface' }} */}
           {treatment !== undefined
             ? Object.keys(treatment).map((keyName, i) => {
-                // console.log(treatment[keyName]);
-                if (treatment[keyName].treatmentType === 0) {
+                // console.log(
+                //   'key- ' +
+                //     JSON.stringify(treatment[keyName].About.TreatmentType)
+                // );
+                if (treatment[keyName].About.TreatmentType === 'Natural Care') {
                   return (
                     <ExpansionPanelDetails>
                       <FormGroup>
@@ -260,15 +262,15 @@ const Service: React.FunctionComponent<any> = (props: any) => {
                               icon={<FavoriteBorder />}
                               checkedIcon={<Favorite />}
                               onChange={handleChange(
-                                treatment[keyName].id,
-                                treatment[keyName].treatmentName
+                                treatment[keyName].ID,
+                                treatment[keyName].About.TreatmentName
                               )}
-                              value={`${treatment[keyName].id}`}
+                              value={`${treatment[keyName].ID}`}
                             />
                           }
-                          label={`${treatment[keyName].treatmentName} `}
+                          label={`${treatment[keyName].About.TreatmentName} `}
                         />
-                        <p>{`£${treatment[keyName].price} - ${treatment[keyName].duration}mins`}</p>
+                        <p>{`£${treatment[keyName].About.Price} - ${treatment[keyName].About.Duration}mins`}</p>
                         <Divider />
                       </FormGroup>
                     </ExpansionPanelDetails>
@@ -286,14 +288,12 @@ const Service: React.FunctionComponent<any> = (props: any) => {
             aria-controls="panel1a-content"
             id="panel1a-header"
           >
-            <Typography className={classes.heading}>
-              List of treatments #2
-            </Typography>
+            <Typography className={classes.heading}>SNS</Typography>
           </ExpansionPanelSummary>
           {treatment !== undefined
             ? Object.keys(treatment).map((keyName, i) => {
                 // console.log(treatment[keyName]);
-                if (treatment[keyName].treatmentType === 1) {
+                if (treatment[keyName].About.TreatmentType === 'SNS') {
                   return (
                     <ExpansionPanelDetails>
                       <FormGroup>
@@ -304,15 +304,15 @@ const Service: React.FunctionComponent<any> = (props: any) => {
                               icon={<FavoriteBorder />}
                               checkedIcon={<Favorite />}
                               onChange={handleChange(
-                                treatment[keyName].id,
-                                treatment[keyName].treatmentName
+                                treatment[keyName].ID,
+                                treatment[keyName].About.TreatmentName
                               )}
-                              value={`${treatment[keyName].id}`}
+                              value={`${treatment[keyName].ID}`}
                             />
                           }
-                          label={`${treatment[keyName].treatmentName}`}
+                          label={`${treatment[keyName].About.TreatmentName}`}
                         />
-                        <p>{`£${treatment[keyName].price} - ${treatment[keyName].duration}mins`}</p>
+                        <p>{`£${treatment[keyName].About.Price} - ${treatment[keyName].About.Duration}mins`}</p>
                         <Divider />
                       </FormGroup>
                     </ExpansionPanelDetails>
@@ -330,14 +330,12 @@ const Service: React.FunctionComponent<any> = (props: any) => {
             aria-controls="panel1a-content"
             id="panel1a-header"
           >
-            <Typography className={classes.heading}>
-              List of treatments #3
-            </Typography>
+            <Typography className={classes.heading}>Acrylic</Typography>
           </ExpansionPanelSummary>
           {treatment !== undefined
             ? Object.keys(treatment).map((keyName, i) => {
                 // console.log(treatment[keyName]);
-                if (treatment[keyName].treatmentType === 2) {
+                if (treatment[keyName].About.TreatmentType === 'Acrylic') {
                   return (
                     <ExpansionPanelDetails>
                       <FormGroup>
@@ -348,15 +346,15 @@ const Service: React.FunctionComponent<any> = (props: any) => {
                               icon={<FavoriteBorder />}
                               checkedIcon={<Favorite />}
                               onChange={handleChange(
-                                treatment[keyName].id,
-                                treatment[keyName].treatmentName
+                                treatment[keyName].ID,
+                                treatment[keyName].About.TreatmentName
                               )}
-                              value={`${treatment[keyName].id}`}
+                              value={`${treatment[keyName].ID}`}
                             />
                           }
-                          label={`${treatment[keyName].treatmentName}`}
+                          label={`${treatment[keyName].About.TreatmentName}`}
                         />
-                        <p>{`£${treatment[keyName].price} - ${treatment[keyName].duration}mins`}</p>
+                        <p>{`£${treatment[keyName].About.Price} - ${treatment[keyName].About.Duration}mins`}</p>
                         <Divider />
                       </FormGroup>
                     </ExpansionPanelDetails>
@@ -374,14 +372,12 @@ const Service: React.FunctionComponent<any> = (props: any) => {
             aria-controls="panel1a-content"
             id="panel1a-header"
           >
-            <Typography className={classes.heading}>
-              List of treatments #4
-            </Typography>
+            <Typography className={classes.heading}>Gel Powder</Typography>
           </ExpansionPanelSummary>
           {treatment !== undefined
             ? Object.keys(treatment).map((keyName, i) => {
                 // console.log(treatment[keyName]);
-                if (treatment[keyName].treatmentType === 3) {
+                if (treatment[keyName].About.TreatmentType === 'Gel Powder') {
                   return (
                     <ExpansionPanelDetails>
                       <FormGroup>
@@ -392,15 +388,15 @@ const Service: React.FunctionComponent<any> = (props: any) => {
                               icon={<FavoriteBorder />}
                               checkedIcon={<Favorite />}
                               onChange={handleChange(
-                                treatment[keyName].id,
-                                treatment[keyName].treatmentName
+                                treatment[keyName].ID,
+                                treatment[keyName].About.TreatmentName
                               )}
-                              value={`${treatment[keyName].id}`}
+                              value={`${treatment[keyName].ID}`}
                             />
                           }
-                          label={`${treatment[keyName].treatmentName}`}
+                          label={`${treatment[keyName].About.TreatmentName}`}
                         />
-                        <p>{`£${treatment[keyName].price} - ${treatment[keyName].duration}mins`}</p>
+                        <p>{`£${treatment[keyName].About.Price} - ${treatment[keyName].About.Duration}mins`}</p>
                         <Divider />
                       </FormGroup>
                     </ExpansionPanelDetails>

@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import Button from 'react-bootstrap/Button';
 import { BrowserRouter as Router, Route, Link } from 'react-router-dom';
 import * as api from '../../containers/BookContainer/BookContainer';
@@ -51,9 +51,19 @@ const OrderButton: React.FunctionComponent = (props: any) => {
       return true;
     } else if (props.form.terms === false) {
       return true;
+    } else if (!validateEmail(props.form.email)) {
+      return true;
     } else {
       return false;
     }
+  };
+
+  const validateEmail = (mail: string) => {
+    if (/^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/.test(mail)) {
+      return true;
+    }
+    alert('You have entered an invalid email address!');
+    return false;
   };
 
   const bookAppointment = () => {
@@ -69,7 +79,8 @@ const OrderButton: React.FunctionComponent = (props: any) => {
       props.form.firstName,
       props.form.lastName,
       props.form.email,
-      props.form.phone
+      props.form.phone,
+      props.form.comments
     );
     // Assertion on this response if successful.
   };
