@@ -37,7 +37,7 @@ const Footer: React.FunctionComponent = () => {
           onClick={sendEmail}
           style={{ marginRight: '20px' }}
         />
-        <b>© {companyName} - January 2020</b>
+        <b>© Co-founders of Paper&Pen Ltd: Hong Le & Viet Le</b>
       </StyledText>
     </StyledFooter>
   );

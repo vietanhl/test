@@ -3,8 +3,7 @@ import TreatmentButton from '../components/TreatmentButton/TreatmentButton';
 import Line from '../components/Line/Line';
 import Menu from '../components/Menu';
 import Auth from '../Auth/auth';
-// import AdminCalendar from 'components/AdminCalendar';
-// import AdminCalendar from '../components/AdminCalendar/AdminCalendar';
+//import AdminCalendar from 'components/AdminCalendar';
 
 const Homepage = (props: any) => {
   const banner = require('../Images/spa-banner.jpg');

@@ -99,7 +99,7 @@ const OrderButton: React.FunctionComponent = (props: any) => {
                 email: props.form.email,
                 phone: props.form.phone,
                 comments: props.form.comments,
-                treatment: props.location.state.treatmentId,
+                treatmentId: props.location.state.treatmentId,
                 date: props.location.state.date,
                 time: props.location.state.time,
                 treatmentName: props.location.state.treatmentName,

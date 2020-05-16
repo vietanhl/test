@@ -17,12 +17,13 @@ export default class Auth {
       //process.env.REACT_APP_AUTH0_DOMAIN,
       clientID: 'PalYUmcqWSfe6TeKptEAn1N25az3OQeU',
       //process.env.REACT_APP_AUTH0_CLIENTID,
-      redirectUri: 'http://localhost:3000/callback',
+      //This to be configured for ENV..
+      redirectUri: 'https://paper-and-pen.herokuapp.com/callback',
       //process.env.REACT_APP_AUTH0_CALLBACK,
       responseType: 'token id_token',
       scope: this.requestedScopes,
       //the audience is specified in Auth0 as Identifier in settings
-      audience: process.env.REACT_APP_AUTH0_AUDIENCE,
+      audience: 'http://localhost:3001',
     });
   }
 

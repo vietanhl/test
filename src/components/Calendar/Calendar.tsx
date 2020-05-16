@@ -22,9 +22,10 @@ const Calendar: React.FunctionComponent<any> = (props: any) => {
         new Date(startDate).toISOString(),
         props.treatmentId
       );
-      if (res.length !== 0) {
-        availableTimes(res);
-      }
+
+      // if (res.length !== 0) {
+      availableTimes(res);
+      // }
     }
     if (props.treatmentId !== undefined) {
       fetchMyApi();
@@ -37,7 +38,9 @@ const Calendar: React.FunctionComponent<any> = (props: any) => {
 
   var today = new Date();
   const availableTimes = (res: any) => {
-    if (res.length !== 0) {
+    if (res.length === 0) {
+      setAvailableTime(['No times available']);
+    } else if (res.length !== 0) {
       const arrayOfTimes = res.map((x: string) => {
         return x.split('T')[1].slice(0, 5);
       });
