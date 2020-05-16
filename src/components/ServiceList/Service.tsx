@@ -42,7 +42,7 @@ const theme = createMuiTheme({
 });
 
 const Service: React.FunctionComponent<any> = (props: any) => {
-  const [treatment, setTreatment] = useState();
+  const [treatment, setTreatment]: any = useState();
   const [treatmentName, setTreatmentName] = useState(['NoTreatmentAvailable']);
   useEffect(() => {
     async function fetchMyApi() {
