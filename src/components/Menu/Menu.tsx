@@ -58,6 +58,13 @@ const Menu: React.FunctionComponent = (props: any) => {
           </NavLink>{' '}
         </ContainerLi>
         <ContainerLi>
+          {isAuthenticated() ? (
+            <NavLink className="menu-heading" to="/scopes">
+              Admin
+            </NavLink>
+          ) : null}{' '}
+        </ContainerLi>
+        <ContainerLi>
           {!isAuthenticated() ? (
             <LoginButton {...props} />
           ) : (

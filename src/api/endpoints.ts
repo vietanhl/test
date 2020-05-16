@@ -10,5 +10,7 @@ export const employee = `${config.API_BASE_URL}/admin/employee`;
 export const operatingTime = `${config.API_BASE_URL}/admin/operatinghours`;
 // Available treatments
 export const treatment = `${config.API_BASE_URL}/admin/treatment`;
+// Get appointments booked for that day (Admin Calendar)
+export const bookedAppointments = `${config.API_BASE_URL}/book`;
 
 // export const workSchedule = `${config.API_BASE_URL}/workschedule`;

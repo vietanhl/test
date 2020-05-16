@@ -16,7 +16,7 @@ import {
 import Footer from './components/Footer/Footer';
 import Auth from './Auth/auth';
 import Callback from './components/Callback/Callback';
-// import Api from './Api/Api';
+import Api from './Api/Api';
 //add to view
 import ConfirmationPage from './views/Confirm';
 
@@ -60,14 +60,6 @@ const App = (props: any) => {
             <Route path="/book" component={BookView} />
             <Route path="/confirmation" component={ConfirmationView} />
             <Route path="/order" component={OrderView} />
-            <Route path="*" component={ErrorPageView} />
-
-            {/* <Route
-              path="/book"
-              component={(props: any) => {
-                return <Api auth={auth} {...props} />;
-              }}
-            /> */}
             <Route
               path="/callback"
               component={(props: any) => {
@@ -76,16 +68,26 @@ const App = (props: any) => {
             />
 
             {/* <Route
-              path="/scopes"
-              component={(props: any) =>
-                auth.isAuthenticated() &&
-                auth.userHasScopes(["read:customer"]) ? (
-                  <Api auth={auth} {...props} />
-                ) : (
-                  <Redirect to="/" />
-                )
-              }
+              path="/book"
+              component={(props: any) => {
+                return <Api auth={auth} {...props} />;
+              }}
             /> */}
+
+            {
+              <Route
+                path="/scopes"
+                component={(props: any) =>
+                  auth.isAuthenticated() &&
+                  auth.userHasScopes(['read:customer']) ? (
+                    <Api auth={auth} {...props} />
+                  ) : (
+                    <Redirect to="/" />
+                  )
+                }
+              />
+            }
+            <Route path="*" component={ErrorPageView} />
           </Switch>
         </BrowserRouter>
       </Header>

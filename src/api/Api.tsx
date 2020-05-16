@@ -1,7 +1,11 @@
 import React, { useState, useEffect } from 'react';
 import PageTitle from '../components/PageTitle';
+import AdminCalendar from '../components/AdminCalendar/AdminCalendar';
+import Menu from '../components/Menu';
+import Auth from '../Auth/auth';
 
 const Api: React.FunctionComponent = (props: any) => {
+  const auth = new Auth(props.history);
   // const [message, setMessage] = useState('');
   // const [privateMessage, setPrivateMessage] = useState('');
   // const [scopeMessage, setScopeMessage] = useState('');
@@ -76,8 +80,9 @@ const Api: React.FunctionComponent = (props: any) => {
   // }, []);
   return (
     <>
-      <PageTitle title="Select an appointment time" />
-      {/* <Calendar {...props} /> */}
+      <Menu auth={auth} {...props} />
+      <PageTitle title="Booking Management" />
+      <AdminCalendar {...props} />
     </>
   );
 };
