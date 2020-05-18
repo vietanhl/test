@@ -3,6 +3,7 @@ import PageTitle from '../components/PageTitle';
 import AdminCalendar from '../components/AdminCalendar/AdminCalendar';
 import Menu from '../components/Menu';
 import Auth from '../Auth/auth';
+import Modal from '../components/Modal';
 
 const Api: React.FunctionComponent = (props: any) => {
   const auth = new Auth(props.history);
@@ -78,11 +79,27 @@ const Api: React.FunctionComponent = (props: any) => {
   // useEffect(() => {
   //   fetchAdminApi();
   // }, []);
+  const [editBooking, setEditBooking] = useState(false);
+  const [event, setEvent] = useState();
+  console.log('event from admin page' + JSON.stringify(event));
+  const eventSelected = (ev: any) => {
+    setEvent(ev);
+    console.log('ev' + JSON.stringify(ev));
+    setEditBooking(true);
+  };
+  useEffect(() => {
+    console.log(editBooking);
+    console.log('ev' + JSON.stringify(event));
+  }, [eventSelected]);
+  //  useEffect(() => {
+  //   console.log('Treatments: ' + JSON.stringify(props));
+  // }, []);
   return (
     <>
       <Menu auth={auth} {...props} />
       <PageTitle title="Booking Management" />
-      <AdminCalendar {...props} />
+      <AdminCalendar parentCallBack={eventSelected} {...props} />
+      <Modal event={event} {...props} />
     </>
   );
 };

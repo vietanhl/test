@@ -87,7 +87,9 @@ const App = (props: any) => {
                 }
               />
             }
+
             <Route path="*" component={ErrorPageView} />
+            <Route path="/error" component={ErrorPageView} />
           </Switch>
         </BrowserRouter>
       </Header>

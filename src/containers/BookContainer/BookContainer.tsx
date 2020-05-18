@@ -59,3 +59,40 @@ export const createBooking = async (
 
   return response;
 };
+
+export const updateBooking = async (payload: any, bookingId?: string) => {
+  var response: any = null;
+  const fetchData = async () => {
+    await axios
+      .put(`${endpoints.book}/${bookingId}`, payload)
+      .then((res) => {
+        response = JSON.stringify(res.data);
+        console.log(response);
+      })
+      .catch((error) => {
+        console.log(error);
+        // return window.location.replace(`${baseURL}/error`);
+      });
+  };
+  await fetchData();
+
+  return response;
+};
+export const deleteBooking = async (bookingId?: string) => {
+  var response: any = null;
+  const fetchData = async () => {
+    await axios
+      .delete(`${endpoints.book}/${bookingId}`)
+      .then((res) => {
+        response = JSON.stringify(res.data);
+        console.log(response);
+      })
+      .catch((error) => {
+        console.log(error);
+        // return window.location.replace(`${baseURL}/error`);
+      });
+  };
+  await fetchData();
+
+  return response;
+};

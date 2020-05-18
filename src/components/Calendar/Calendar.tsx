@@ -19,7 +19,7 @@ const Calendar: React.FunctionComponent<any> = (props: any) => {
   useEffect(() => {
     async function fetchMyApi() {
       const res = await api.getAvailabilityByTreatment(
-        new Date(startDate).toISOString(),
+        new Date(startDate).toISOString().substring(10, 0),
         props.treatmentId
       );
 
