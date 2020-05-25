@@ -7,6 +7,11 @@ import Modal from '../components/Modal';
 
 const Api: React.FunctionComponent = (props: any) => {
   const auth = new Auth(props.history);
+
+  // useEffect(() => {
+  //   console.log('Treatments: ' + JSON.stringify(props));
+  // }, []);
+
   // const [message, setMessage] = useState('');
   // const [privateMessage, setPrivateMessage] = useState('');
   // const [scopeMessage, setScopeMessage] = useState('');
@@ -99,6 +104,7 @@ const Api: React.FunctionComponent = (props: any) => {
       <Menu auth={auth} {...props} />
       <PageTitle title="Booking Management" />
       <AdminCalendar parentCallBack={eventSelected} {...props} />
+      {/* <TreatmentList parentCallBack={treatmentSelected} {...props} /> */}
       <Modal event={event} {...props} />
     </>
   );

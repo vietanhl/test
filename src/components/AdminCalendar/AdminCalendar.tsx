@@ -3,6 +3,7 @@ import { Calendar, momentLocalizer } from 'react-big-calendar';
 import moment from 'moment';
 import 'react-big-calendar/lib/css/react-big-calendar.css';
 import * as api from '../../containers/AdminCalendarContainer/AdminCalendarContainer';
+import * as treatmentApi from '../../containers/TreatmentContainer/TreatmentContainer';
 import Modal from '../Modal/Modal';
 import { Route, Link } from 'react-router-dom';
 
@@ -14,13 +15,14 @@ const AdminCalendar: React.FunctionComponent = (props: any) => {
   const [currentEven, setCurrentEvent] = useState();
   console.log(now);
 
+  //TODO: Change default booking.
   const [event, setEvent] = useState([
     {
-      id: '15',
-      title: '1Treatment',
+      id: '',
+      title: '',
       start: now,
       end: now,
-      employee: 'test',
+      employee: '',
     },
   ]);
 
@@ -56,11 +58,43 @@ const AdminCalendar: React.FunctionComponent = (props: any) => {
             date: new Date(booking.StartTime).toISOString().substring(10, 0),
           };
         });
-        setEvent(eventsMapped);
+        if (eventsMapped === undefined || eventsMapped === null) {
+          return null;
+        } else {
+          setEvent(eventsMapped);
+        }
       }
     }
     fetchMyApi();
   }, [dateReq]);
+
+  // Treatments
+  // const [treatment, setTreatment]: any = useState();
+  // const [mappedTreatment, setMappedTreatment]: any = useState();
+
+  // useEffect(() => {
+  //   async function fetchMyApi() {
+  //     const res = await treatmentApi.getTreatments();
+
+  //     setTreatment(res);
+  //     // console.log('treatments: ' + res);
+  //   }
+  //   fetchMyApi();
+  // }, []);
+
+  // useEffect(() => {
+  //   // console.log(treatment);
+  //   if (treatment === null || treatment === undefined) {
+  //   } else {
+  //     const mapped = Object.keys(treatment).map((keyName, i) => {
+  //       return {
+  //         treatmentName: treatment[keyName].About.TreatmentName,
+  //         treatmentId: treatment[keyName].ID,
+  //       };
+  //     });
+  //     console.log(mapped);
+  //   }
+  // }, [treatment]);
 
   //MODAL + EVENT
 

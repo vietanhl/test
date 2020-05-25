@@ -7,6 +7,7 @@ import * as api from '../../containers/BookContainer/BookContainer';
 import styled from 'styled-components';
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
+import TreatmentList from '../../components/ServiceList';
 
 interface State extends React.Props<any> {
   id: string;
@@ -77,7 +78,20 @@ const Modal: React.FunctionComponent = (event: any, props: any) => {
     bookingId: '',
     date: '',
   });
+  const [treatmentId, setTreatmentId] = useState();
+  const [treatmentName, setTreatmentName] = useState();
 
+  const treatmentSelected = (treatmentId: any, treatmentName: any) => {
+    setTreatmentId(treatmentId);
+    setTreatmentName(treatmentName);
+  };
+
+  useEffect(() => {
+    console.log(treatmentId);
+    console.log(treatmentName);
+  }, [treatmentId]);
+
+  // -----------
   useEffect(() => {
     // console.log(event.event);
     var correctBooking = { ...event.event };
@@ -116,7 +130,7 @@ const Modal: React.FunctionComponent = (event: any, props: any) => {
         email: values.email,
         phone: values.phone,
       },
-      treatmentId: values.treatmentId,
+      treatmentId: treatmentId,
       notes: values.notes,
       date: values.date,
       startTime: values.start,
@@ -202,6 +216,10 @@ const Modal: React.FunctionComponent = (event: any, props: any) => {
   return (
     <div>
       <PageTitle title="Edit Booking " />
+      <p>To edit a booking, please click on the calendar event</p>
+      <p>
+        Note: please keep the same format as displayed for a successful update
+      </p>
       <ContainerUl>
         <ContainerLi>
           <Button
@@ -259,7 +277,7 @@ const Modal: React.FunctionComponent = (event: any, props: any) => {
         />
       </form>
       {/* ADDING */}
-      <form className={classes.root} noValidate>
+      {/* <form className={classes.root} noValidate>
         <TextField
           required
           id="treatmentId"
@@ -267,7 +285,7 @@ const Modal: React.FunctionComponent = (event: any, props: any) => {
           value={values.treatmentId}
           onChange={handleChange('treatmentId')}
         />
-      </form>
+      </form> */}
       <form className={classes.root} noValidate>
         <TextField
           required
@@ -286,7 +304,7 @@ const Modal: React.FunctionComponent = (event: any, props: any) => {
           onChange={handleChange('start')}
         />
       </form>
-      <form className={classes.root} noValidate>
+      {/* <form className={classes.root} noValidate>
         <TextField
           required
           id="end"
@@ -294,7 +312,7 @@ const Modal: React.FunctionComponent = (event: any, props: any) => {
           value={values.end}
           onChange={handleChange('end')}
         />
-      </form>
+      </form> */}
       {/* ADDING */}
       <form className={classes.root} noValidate>
         <TextField
@@ -307,6 +325,8 @@ const Modal: React.FunctionComponent = (event: any, props: any) => {
           onChange={handleChange('notes')}
         />
       </form>
+      <p>Treatments must be selected to update the booking</p>
+      <TreatmentList parentCallBack={treatmentSelected} {...props} />
       <ContainerUl>
         <ContainerLi>
           <Button
