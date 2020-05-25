@@ -4,6 +4,9 @@ import 'react-datepicker/dist/react-datepicker.css';
 import Button from 'react-bootstrap/Button';
 import Grid from '@material-ui/core/Grid';
 import * as api from '../../containers/AvailabilityContainer/AvailabilityContainer';
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
+import { css } from 'styled-components';
 
 const Calendar: React.FunctionComponent<any> = (props: any) => {
   // console.log('CALENDAR - ' + JSON.stringify(props));
@@ -39,7 +42,11 @@ const Calendar: React.FunctionComponent<any> = (props: any) => {
   var today = new Date();
   const availableTimes = (res: any) => {
     if (res.length === 0) {
-      setAvailableTime(['No times available']);
+      setAvailableTime([]);
+      //Alert
+      toast(`Sorry, no available times`, {
+        toastId: 'custom-id-yes',
+      });
     } else if (res.length !== 0) {
       const arrayOfTimes = res.map((x: string) => {
         return x.split('T')[1].slice(0, 5);
@@ -93,6 +100,7 @@ const Calendar: React.FunctionComponent<any> = (props: any) => {
           })}
         </Grid>
       </Grid>
+      <ToastContainer />
     </>
   );
 };
