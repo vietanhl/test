@@ -86,14 +86,16 @@ const Modal: React.FunctionComponent = (event: any, props: any) => {
     setTreatmentName(treatmentName);
   };
 
-  useEffect(() => {
-    console.log(treatmentId);
-    console.log(treatmentName);
-  }, [treatmentId]);
+  // useEffect(() => {
+  // console.log(treatmentId);
+  // console.log(treatmentName);
+  // console.log(event);
+  // props.treatmentId = treatmentId;
+  // props.treatmentName = treatmentName;
+  // }, [treatmentId]);
 
   // -----------
   useEffect(() => {
-    // console.log(event.event);
     var correctBooking = { ...event.event };
     correctBooking.start = correctBooking.start
       ?.toISOString()
@@ -102,6 +104,10 @@ const Modal: React.FunctionComponent = (event: any, props: any) => {
     console.log(correctBooking);
     // setBooking(event.event);
     setBooking(correctBooking);
+
+    // PRE-SELECT treatments
+    console.log(correctBooking.treatmentId);
+    console.log(correctBooking.treatmentName);
   }, [event]);
   useEffect(() => {
     console.log(booking);
@@ -118,6 +124,24 @@ const Modal: React.FunctionComponent = (event: any, props: any) => {
     event: React.ChangeEvent<HTMLInputElement>
   ) => {
     setValues({ ...values, [prop]: event.target.value });
+  };
+
+  const processBooking = () => {
+    const mappedDetails = {
+      client: {
+        firstName: values.firstName,
+        lastName: values.lastName,
+        email: values.email,
+        phone: values.phone,
+      },
+      treatmentId: treatmentId,
+      notes: values.notes,
+      date: values.date,
+      startTime: values.start,
+      endTime: values.end,
+    };
+    api.processBooking(mappedDetails);
+    successProcessBookingAlert();
   };
 
   const updateBooking = () => {
@@ -148,9 +172,12 @@ const Modal: React.FunctionComponent = (event: any, props: any) => {
     succesAlert();
     api.deleteBooking(values.id);
   };
-  // useEffect(() => {
-  //   console.log(booking);
-  // }, [event]);
+  useEffect(() => {
+    console.log('BOOKING' + JSON.stringify(booking));
+    console.log(booking.treatmentId);
+    console.log(booking.treatmentName);
+    //  console.log('MODAL EVENT' + JSON.stringify(event));
+  }, [event, booking]);
   // useEffect(() => {
   //   console.log(booking);
   // }, [event]);
@@ -184,29 +211,12 @@ const Modal: React.FunctionComponent = (event: any, props: any) => {
     toast.success(`✔ please refresh to display changes`);
   };
 
-  const updateBookingIsDisabled = () => {
-    // console.log('booking' + booking.start);
-    // console.log('booking' + JSON.stringify(booking));
-    // console.log(Object.keys(booking).length);
-    // console.log('value' + values.start);
+  const successProcessBookingAlert = () => {
+    toast.success(`✔ booking processed`);
+  };
 
-    if (
-      values.id === undefined
-      // ||
-      // values.title === '' ||
-      // values.start === '' ||
-      // values.end === '' ||
-      // values.employee === '' ||
-      // values.firstName === '' ||
-      // values.lastName === '' ||
-      // values.email === '' ||
-      // values.phone === '' ||
-      // values.treatmentId === '' ||
-      // values.notes === '' ||
-      // values.treatmentName === '' ||
-      // values.bookingId === '' ||
-      // values.date === ''
-    ) {
+  const updateBookingIsDisabled = () => {
+    if (values.id === undefined) {
       return true;
     } else {
       return false;
@@ -215,12 +225,22 @@ const Modal: React.FunctionComponent = (event: any, props: any) => {
 
   return (
     <div>
-      <PageTitle title="Edit Booking " />
+      <PageTitle title="Manage Booking " />
       <p>To edit a booking, please click on the calendar event</p>
       <p>
         Note: please keep the same format as displayed for a successful update
       </p>
       <ContainerUl>
+        <ContainerLi>
+          <Button
+            variant="outline-success"
+            size="lg"
+            onClick={processBooking}
+            disabled={updateBookingIsDisabled()}
+          >
+            Process booking
+          </Button>
+        </ContainerLi>
         <ContainerLi>
           <Button
             variant="outline-secondary"
@@ -326,8 +346,18 @@ const Modal: React.FunctionComponent = (event: any, props: any) => {
         />
       </form>
       <p>Treatments must be selected to update the booking</p>
-      <TreatmentList parentCallBack={treatmentSelected} {...props} />
+      <TreatmentList
+        preSelectTreatmentName={booking.treatmentName}
+        preSelectedTreatmentId={booking.treatmentId}
+        parentCallBack={treatmentSelected}
+        {...props}
+      />
       <ContainerUl>
+        <ContainerLi>
+          <Button variant="outline-success" size="lg" onClick={processBooking}>
+            Process booking
+          </Button>
+        </ContainerLi>
         <ContainerLi>
           <Button
             variant="outline-secondary"

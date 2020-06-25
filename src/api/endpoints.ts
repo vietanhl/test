@@ -12,5 +12,7 @@ export const operatingTime = `${config.API_BASE_URL}/admin/operatinghours`;
 export const treatment = `${config.API_BASE_URL}/admin/treatment`;
 // Get appointments booked for that day (Admin Calendar)
 export const bookedAppointments = `${config.API_BASE_URL}/book`;
+// Process booking
+export const payment = `${config.API_BASE_URL}/admin/payment`;
 
 // export const workSchedule = `${config.API_BASE_URL}/workschedule`;

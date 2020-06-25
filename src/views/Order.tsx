@@ -44,6 +44,8 @@ const Order: React.FunctionComponent = (props: any) => {
   return (
     <div>
       <Menu auth={auth} {...props} />
+      <br />
+      <br />
       <Stepper />
       <PageTitle
         title={`Enjoy your treatment ${props.location.state.firstName}!`}

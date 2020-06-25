@@ -39,6 +39,8 @@ const Contact: React.FunctionComponent = (props: any) => {
     <>
       <Menu auth={auth} {...props} />
       <ContainerUl>
+        <br />
+        <br />
         <PageTitle title="Contact us" />
         <ContainerLi>
           <a className="heading">Address</a>

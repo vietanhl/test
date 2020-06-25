@@ -41,3 +41,8 @@ export const ErrorPageView = Loadable({
   loader: () => import('./ErrorPage'),
   loading: () => <Spinner color="dark" />,
 });
+
+export const AdminEditPageView = Loadable({
+  loader: () => import('./AdminEdit'),
+  loading: () => <Spinner color="dark" />,
+});

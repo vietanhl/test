@@ -1,6 +1,12 @@
 import React from 'react';
 import './App.css';
-import { Switch, Route, BrowserRouter, Redirect } from 'react-router-dom';
+import {
+  Switch,
+  Route,
+  BrowserRouter,
+  Redirect,
+  NavLink,
+} from 'react-router-dom';
 import styled from 'styled-components';
 import Menu from './components/Menu/Menu';
 import {
@@ -12,6 +18,7 @@ import {
   ConfirmationView,
   OrderView,
   ErrorPageView,
+  AdminEditPageView,
 } from './views/LoadableView';
 import Footer from './components/Footer/Footer';
 import Auth from './Auth/auth';
@@ -37,6 +44,9 @@ const App = (props: any) => {
 
   return (
     <>
+      <NavLink className="menu-heading" to="/home">
+        <p className="centered">Paper&Pen</p>
+      </NavLink>{' '}
       <Header>
         <BrowserRouter>
           {/* <Menu auth={auth} {...props} /> */}
@@ -81,6 +91,19 @@ const App = (props: any) => {
                   auth.isAuthenticated() &&
                   auth.userHasScopes(['read:customer']) ? (
                     <Api auth={auth} {...props} />
+                  ) : (
+                    <Redirect to="/" />
+                  )
+                }
+              />
+            }
+            {
+              <Route
+                path="/admin-edit"
+                component={(props: any) =>
+                  auth.isAuthenticated() &&
+                  auth.userHasScopes(['read:customer']) ? (
+                    <AdminEditPageView auth={auth} {...props} />
                   ) : (
                     <Redirect to="/" />
                   )

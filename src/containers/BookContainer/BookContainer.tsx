@@ -71,7 +71,7 @@ export const updateBooking = async (payload: any, bookingId?: string) => {
       })
       .catch((error) => {
         console.log(error);
-        // return window.location.replace(`${baseURL}/error`);
+        return window.location.replace(`${baseURL}/error`);
       });
   };
   await fetchData();
@@ -89,7 +89,26 @@ export const deleteBooking = async (bookingId?: string) => {
       })
       .catch((error) => {
         console.log(error);
-        // return window.location.replace(`${baseURL}/error`);
+        return window.location.replace(`${baseURL}/error`);
+      });
+  };
+  await fetchData();
+
+  return response;
+};
+
+export const processBooking = async (payload: any) => {
+  var response: any = null;
+  const fetchData = async () => {
+    await axios
+      .post(`${endpoints.payment}`, payload)
+      .then((res) => {
+        response = JSON.stringify(res.data);
+        console.log(response);
+      })
+      .catch((error) => {
+        console.log(error);
+        return window.location.replace(`${baseURL}/error`);
       });
   };
   await fetchData();

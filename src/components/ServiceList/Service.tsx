@@ -19,6 +19,7 @@ import ExpandMoreIcon from '@material-ui/icons/ExpandMore';
 import * as api from '../../containers/TreatmentContainer/TreatmentContainer';
 import Divider from '@material-ui/core/Divider';
 import { Spinner } from 'reactstrap';
+import { EditorFormatLineSpacing } from 'material-ui/svg-icons';
 
 const useStyles = makeStyles((theme: Theme) =>
   createStyles({
@@ -29,7 +30,6 @@ const useStyles = makeStyles((theme: Theme) =>
     heading: {
       fontSize: theme.typography.pxToRem(15),
       fontFamily: 'Abril Fatface',
-      fontWeight: theme.typography.fontWeightBold,
     },
   })
 );
@@ -42,30 +42,49 @@ const theme = createMuiTheme({
   },
 });
 
-const Service: React.FunctionComponent<any> = (props: any) => {
+const Service: React.FunctionComponent<any> = (
+  props: any,
+  preSelectedTreatmentName?: any,
+  preSelectedTreatmentId?: any
+) => {
   const [treatment, setTreatment]: any = useState();
   const [treatmentName, setTreatmentName] = useState(['NoTreatmentAvailable']);
+  const [selectedTreatment, setSelectedTreatment] = useState([0]);
   useEffect(() => {
     async function fetchMyApi() {
       const res = await api.getTreatments();
       setTreatment(res);
-      // console.log('treatments: ' + res);
     }
     fetchMyApi();
+
+    // SET PRE-SELECTED TREATMENTS HERE.
+    // pushTreatments('5ef3e49c12835f317dea66fa', 'Pedicure');
+    // console.log('PRE-SELECTED TREATMENTS - ' + JSON.stringify(props));
+    // console.log('PRE-SELECTED TREATMENTS - ' + props.preSelectedTreatmentId);
+    // console.log('PRE-SELECTED TNAME ' + props.preSelectTreatmentName);
+    // console.log('TYPEOF' + props.preSelectedTreatmentId);
+    // var treatmentIds: string | any[] = [];
+    // var treatmentNames: string | any[] = [];
+    // if (props.preSelectedTreatmentId !== undefined) {
+    //   treatmentIds = Object.values(props.preSelectedTreatmentId);
+    // }
+    // if (props.preSelectTreatmentName !== undefined) {
+    //   treatmentNames = Object.values(props.preSelectTreatmentName);
+    // }
+    // // pushTreatments(treatmentIds[0], treatmentNames[0]);
+    // for (let i = 0; i < treatmentIds.length; i++) {
+    //   console.log(treatmentNames[i]);
+    //   console.log(treatmentIds[i]);
+    //   pushTreatments(treatmentIds[i], treatmentNames[i]);
+    // }
   }, []);
 
-  // Saving the information when navigating back
-  // useEffect(() => {
-  //   console.log(
-  //     'inside service: ' + JSON.stringify(props.history.location.state)
-  //   );
-  //   if (props.history.location.state.treatmentId !== undefined) {
-  //     setSelectedTreatment(props.history.location.state.treatmentId);
-  //     setTreatmentName(props.history.location.state.treatmentName);
-  //   }
-  // }, [props]);
-
+  useEffect(() => {
+    console.log('PROPS' + JSON.stringify(preSelectedTreatmentName));
+    console.log('PROPS' + preSelectedTreatmentId);
+  }, [preSelectedTreatmentName, preSelectedTreatmentId]);
   const mapTreatments = () => {
+    // pushTreatments('5ef3e49c12835f317dea66fa', 'Pedicure');
     var listOfTreatmentTypes: any[] = [];
 
     if (treatment === null || treatment === undefined) {
@@ -83,13 +102,7 @@ const Service: React.FunctionComponent<any> = (props: any) => {
           }
         }
       }
-      // console.log(Object.values(listOfTreatmentTypes).indexOf(2));
-      //TO GET Available treatment Types
-      // for (var type in listOfTreatmentTypes) {
-      //   // console.log(listOfTreatmentTypes[type]);
-      //   // treatmentTypes.push(listOfTreatmentTypes[type]);
-      // }
-      // console.log(listOfTreatmentTypes);
+
       if (Object.values(listOfTreatmentTypes).indexOf(2)) {
         Object.keys(treatment).map((keyName, i) => {
           // console.log(treatment[keyName]);
@@ -138,43 +151,22 @@ const Service: React.FunctionComponent<any> = (props: any) => {
     }
   };
 
-  const [selectedTreatment, setSelectedTreatment] = useState([0]);
   useEffect(() => {
     props.parentCallBack(selectedTreatment, treatmentName);
   }, [treatment, treatmentName, props, selectedTreatment]);
-  //   () => {
-  //   if (treatment === null || treatment === undefined) {
-  //     return null;
-  //   }
-  //   Object.keys(treatment).map((keyName, i) => {
-  //     return (treatment[keyName].id = false);
-  //   });
-  // }
 
-  const handleChange = (name: number, treatmentName: string) => (
-    event: React.ChangeEvent<HTMLInputElement>
-  ) => {
-    // setSelectedTreatment({
-    //   ...selectedTreatment,
-    //   [name]: event.target.checked,
-    // });
+  const handleChange = (name: any, treatmentName: string) => () =>
+    // event: React.ChangeEvent<HTMLInputElement>
+    {
+      pushTreatments(name, treatmentName);
+    };
 
-    // var array: string[] = [...selectedTreatment];
-    // console.log(name);
-    // if (array.includes(name)) {
-    //   var index = array.indexOf(name);
-    //   array.splice(index, 1);
-    // } else {
-    //   array.push(name);
-    // }
-    // setSelectedTreatment(array);
-    pushTreatments(name, treatmentName);
-  };
-
-  const pushTreatments = (name: number, tName: string) => {
-    var array: number[] = [...selectedTreatment];
+  const pushTreatments = (name: any, tName: string) => {
+    var array: any[] = [...selectedTreatment];
     var treatmentNameArray: string[] = [...treatmentName];
-    console.log(name);
+    console.log('treatment ID to be pushed: ' + array);
+    console.log('treatment Name to be pushed: ' + treatmentNameArray);
+    console.log('Treatment ID ' + name);
     if (array.includes(name)) {
       var index = array.indexOf(name);
       array.splice(index, 1);
@@ -187,8 +179,8 @@ const Service: React.FunctionComponent<any> = (props: any) => {
       index = array.indexOf(0);
       array.splice(index, 1);
     }
+    // array == treatment ID here.
     setSelectedTreatment(array);
-    // TODO: if treatment name is the same, we can fix this by calling the treatment/{id} endpoint
     if (treatmentNameArray.includes(tName)) {
       index = treatmentNameArray.indexOf(tName);
       treatmentNameArray.splice(index, 1);
@@ -204,6 +196,64 @@ const Service: React.FunctionComponent<any> = (props: any) => {
     console.log('ARRAY ' + treatmentNameArray);
     setTreatmentName(treatmentNameArray);
   };
+
+  // Preselect treatments
+  useEffect(() => {
+    // var listOfPreSelectedTreatmentsIds = ['5ef3e49c12835f317dea66fa'];
+    // var listOfPreSelectedTreatmentNames = ['Full set'];
+    // for (
+    //   let i = 0;
+    //   i < listOfPreSelectedTreatmentsIds.length ||
+    //   i < listOfPreSelectedTreatmentNames.length;
+    //   i++
+    // ) {
+    //   pushTreatments(
+    //     listOfPreSelectedTreatmentsIds[i],
+    //     listOfPreSelectedTreatmentNames[i]
+    //   );
+    // }
+    // pushTreatments('5ef3e49c12835f317dea66fa', 'Full set');
+  }, []);
+
+  useEffect(() => {
+    console.log('PRE-SELECTED TREATMENTS - ' + JSON.stringify(props));
+    console.log('PRE-SELECTED TREATMENTS - ' + props.preSelectedTreatmentId);
+    console.log('PRE-SELECTED TNAME ' + props.preSelectTreatmentName);
+    console.log('TYPEOF' + props.preSelectedTreatmentId);
+    var treatmentIds: string | any[] = [];
+    var treatmentNames: string | any[] = [];
+    if (props.preSelectedTreatmentId !== undefined) {
+      treatmentIds = Object.values(props.preSelectedTreatmentId);
+    }
+    if (props.preSelectTreatmentName !== undefined) {
+      treatmentNames = Object.values(props.preSelectTreatmentName);
+    }
+    // pushTreatments(treatmentIds[0], treatmentNames[0]);
+    for (let i = 0; i < treatmentIds.length; i++) {
+      console.log(treatmentNames[i]);
+      console.log(treatmentIds[i]);
+      pushTreatments(treatmentIds[i], treatmentNames[i]);
+    }
+    // for (const item in props.preSelectedTreatmentId) {
+    //   console.log('obj' + props.preSelectedTreatmentId[item]);
+    //   pushTreatments(props.preSelectedTreatmentId[item]);
+    // }
+  }, [props.preSelectedTreatmentId]);
+
+  // TODO: need a useEffect that will set Selected Treatment as a prop.
+  const isDefaultChecked = (treatmentId: any) => {
+    if (selectedTreatment.includes(treatmentId)) {
+      // console.log('before decision' + typeof selectedTreatment[0]);
+      // console.log('decision: true ' + typeof treatmentId);
+      return true;
+    } else {
+      // console.log(selectedTreatment);
+      // console.log('decision: false ' + treatmentId);
+      return false;
+    }
+  };
+
+  // -----------------------------------------------------------------------------------------------------------------------------
 
   return (
     <>
@@ -234,7 +284,9 @@ const Service: React.FunctionComponent<any> = (props: any) => {
                           <FormControlLabel
                             control={
                               <Checkbox
-                                checked={treatment.treatment1}
+                                checked={isDefaultChecked(
+                                  treatment[keyName].ID
+                                )}
                                 icon={<FavoriteBorder />}
                                 checkedIcon={<Favorite />}
                                 onChange={handleChange(
@@ -276,7 +328,9 @@ const Service: React.FunctionComponent<any> = (props: any) => {
                           <FormControlLabel
                             control={
                               <Checkbox
-                                checked={treatment.treatment1}
+                                checked={isDefaultChecked(
+                                  treatment[keyName].ID
+                                )}
                                 icon={<FavoriteBorder />}
                                 checkedIcon={<Favorite />}
                                 onChange={handleChange(
@@ -318,7 +372,9 @@ const Service: React.FunctionComponent<any> = (props: any) => {
                           <FormControlLabel
                             control={
                               <Checkbox
-                                checked={treatment.treatment1}
+                                checked={isDefaultChecked(
+                                  treatment[keyName].ID
+                                )}
                                 icon={<FavoriteBorder />}
                                 checkedIcon={<Favorite />}
                                 onChange={handleChange(
@@ -360,7 +416,9 @@ const Service: React.FunctionComponent<any> = (props: any) => {
                           <FormControlLabel
                             control={
                               <Checkbox
-                                checked={treatment.treatment1}
+                                checked={isDefaultChecked(
+                                  treatment[keyName].ID
+                                )}
                                 icon={<FavoriteBorder />}
                                 checkedIcon={<Favorite />}
                                 onChange={handleChange(

@@ -6,6 +6,7 @@ import {
   instagram,
   email,
 } from '../../config/merchantConfig/config';
+import { light } from '@material-ui/core/styles/createPalette';
 const { SocialIcon } = require('react-social-icons');
 
 const StyledFooter = styled.div`
@@ -29,7 +30,6 @@ const Footer: React.FunctionComponent = () => {
   return (
     <StyledFooter>
       <Line />
-
       <StyledText>
         <SocialIcon url={instagram} style={{ marginRight: '20px' }} />
         <SocialIcon

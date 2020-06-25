@@ -91,7 +91,6 @@ label {
 
 .heading {
   font-family: 'Abril Fatface', cursive;
-  font-weight: bolder;
   display: swap;
   font-size: calc(18px + 1vmin);
   line-height: 1.27;
@@ -111,7 +110,6 @@ label {
 
 .menu-heading {
   font-family: 'Abril Fatface', cursive;
-  font-weight: bolder;
   font-size: calc(15px + 1vmin);
   line-height: 1.27;
   max-width: 75rem;
@@ -175,4 +173,29 @@ label {
 
 .rbc-timeslot-group:nth-child(n) {
   border-top: 1px solid #ccc;
+}
+
+.centered {
+  position: absolute;
+  top: 20px;
+  left: 25px;
+  font-family: "Abril Fatface", cursive;
+  font-size: calc(18px + 1vmin);
+}
+
+.homeText {
+  /* position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-90%, -150%); */
+  position: absolute;
+  top: 70px;
+  left: 16px;
+  font-family: "Abril Fatface", cursive;
+  font-size: calc(18px + 1vmin);
+  color: white;
+}
+
+.absolute {
+  position: absolute;
 }
