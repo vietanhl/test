@@ -25,8 +25,6 @@ import ChevronRightIcon from '@material-ui/icons/ChevronRight';
 import ListItem from '@material-ui/core/ListItem';
 import ListItemIcon from '@material-ui/core/ListItemIcon';
 import ListItemText from '@material-ui/core/ListItemText';
-import InboxIcon from '@material-ui/icons/MoveToInbox';
-import MailIcon from '@material-ui/icons/Mail';
 
 const ContainerUl = styled.ul`
   padding-top: 20px;
@@ -151,13 +149,14 @@ const Menu: React.FunctionComponent = (props: any) => {
 
   const { isAuthenticated } = props.auth;
   return (
-    <div>
+    <div className="menu-heading">
       {/* <Desktop>Desktop or laptop</Desktop>
       <Tablet>Tablet</Tablet> */}
       <Mobile>
         <div className={classes.root}>
           <CssBaseline />
           <AppBar
+            color="transparent"
             position="fixed"
             className={clsx(classes.appBar, {
               [classes.appBarShift]: open,
@@ -168,20 +167,20 @@ const Menu: React.FunctionComponent = (props: any) => {
                 color="inherit"
                 aria-label="open drawer"
                 onClick={handleDrawerOpen}
-                edge="start"
+                edge="end"
                 className={clsx(classes.menuButton, open && classes.hide)}
               >
                 <MenuIcon />
               </IconButton>
-              <Typography variant="h6" noWrap>
-                Menu{' '}
-              </Typography>
+              {/* <Typography variant="h6" noWrap>
+                Menu
+              </Typography> */}
             </Toolbar>
           </AppBar>
           <Drawer
             className={classes.drawer}
             variant="persistent"
-            anchor="left"
+            anchor="right"
             open={open}
             classes={{
               paper: classes.drawerPaper,
@@ -227,13 +226,23 @@ const Menu: React.FunctionComponent = (props: any) => {
                   </NavLink>
                 </ListItem>
               ) : null}
-              {/* {['Inbox', 'Starred', 'Send email', 'Drafts'].map(
-                (text, index) => (
-                  <ListItem button key={text}>
-                    <ListItemText primary={text} />
-                  </ListItem>
-                )
-              )} */}
+
+              <Divider />
+              {!isAuthenticated() ? (
+                <ListItem button key="login">
+                  <br />
+                  <br />
+                  <br />
+                  <LoginButton {...props} />
+                </ListItem>
+              ) : (
+                <ListItem button key="logout">
+                  <br />
+                  <br />
+                  <br />
+                  <LogoutButton {...props} />
+                </ListItem>
+              )}
             </List>
           </Drawer>
           <main
