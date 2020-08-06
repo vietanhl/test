@@ -276,7 +276,9 @@ const Service: React.FunctionComponent<any> = (
           {mapTreatments}
           {treatmentType.map((x: any) => {
             return (
-              <ExpansionPanel>
+              <ExpansionPanel
+                defaultExpanded={x === treatmentType[0] ? true : false}
+              >
                 <ExpansionPanelSummary
                   expandIcon={<ExpandMoreIcon />}
                   aria-controls="panel1a-content"
@@ -322,6 +324,186 @@ const Service: React.FunctionComponent<any> = (
             );
           })}
         </ThemeProvider>
+        // <ThemeProvider theme={theme}>
+        //   {mapTreatments}
+        //   <ExpansionPanel defaultExpanded={true}>
+        //     <ExpansionPanelSummary
+        //       expandIcon={<ExpandMoreIcon />}
+        //       aria-controls="panel1a-content"
+        //       id="panel1a-header"
+        //     >
+        //       <Typography className={classes.heading}>Natural Care</Typography>
+        //     </ExpansionPanelSummary>
+
+        //     {treatment !== undefined
+        //       ? Object.keys(treatment).map((keyName, i) => {
+        //           if (
+        //             treatment[keyName].About.TreatmentType === 'Natural Care'
+        //           ) {
+        //             return (
+        //               <ExpansionPanelDetails>
+        //                 <FormGroup>
+        //                   <FormControlLabel
+        //                     control={
+        //                       <Checkbox
+        //                         checked={isDefaultChecked(
+        //                           treatment[keyName].ID
+        //                         )}
+        //                         icon={<FavoriteBorder />}
+        //                         checkedIcon={<Favorite />}
+        //                         onChange={handleChange(
+        //                           treatment[keyName].ID,
+        //                           treatment[keyName].About.TreatmentName
+        //                         )}
+        //                         value={`${treatment[keyName].ID}`}
+        //                       />
+        //                     }
+        //                     label={`${treatment[keyName].About.TreatmentName} `}
+        //                   />
+        //                   <p>{`£${treatment[keyName].About.Price} - ${treatment[keyName].About.Duration}mins`}</p>
+        //                   <Divider />
+        //                 </FormGroup>
+        //               </ExpansionPanelDetails>
+        //             );
+        //           } else {
+        //             return null;
+        //           }
+        //         })
+        //       : null}
+        //   </ExpansionPanel>
+        //   {/* Panel 2 */}
+        //   <ExpansionPanel>
+        //     <ExpansionPanelSummary
+        //       expandIcon={<ExpandMoreIcon />}
+        //       aria-controls="panel1a-content"
+        //       id="panel1a-header"
+        //     >
+        //       <Typography className={classes.heading}>SNS</Typography>
+        //     </ExpansionPanelSummary>
+        //     {treatment !== undefined
+        //       ? Object.keys(treatment).map((keyName, i) => {
+        //           // console.log(treatment[keyName]);
+        //           if (treatment[keyName].About.TreatmentType === 'SNS') {
+        //             return (
+        //               <ExpansionPanelDetails>
+        //                 <FormGroup>
+        //                   <FormControlLabel
+        //                     control={
+        //                       <Checkbox
+        //                         checked={isDefaultChecked(
+        //                           treatment[keyName].ID
+        //                         )}
+        //                         icon={<FavoriteBorder />}
+        //                         checkedIcon={<Favorite />}
+        //                         onChange={handleChange(
+        //                           treatment[keyName].ID,
+        //                           treatment[keyName].About.TreatmentName
+        //                         )}
+        //                         value={`${treatment[keyName].ID}`}
+        //                       />
+        //                     }
+        //                     label={`${treatment[keyName].About.TreatmentName}`}
+        //                   />
+        //                   <p>{`£${treatment[keyName].About.Price} - ${treatment[keyName].About.Duration}mins`}</p>
+        //                   <Divider />
+        //                 </FormGroup>
+        //               </ExpansionPanelDetails>
+        //             );
+        //           } else {
+        //             return null;
+        //           }
+        //         })
+        //       : null}
+        //   </ExpansionPanel>
+        //   {/* PANEL 3 */}
+        //   <ExpansionPanel>
+        //     <ExpansionPanelSummary
+        //       expandIcon={<ExpandMoreIcon />}
+        //       aria-controls="panel1a-content"
+        //       id="panel1a-header"
+        //     >
+        //       <Typography className={classes.heading}>Acrylic</Typography>
+        //     </ExpansionPanelSummary>
+        //     {treatment !== undefined
+        //       ? Object.keys(treatment).map((keyName, i) => {
+        //           // console.log(treatment[keyName]);
+        //           if (treatment[keyName].About.TreatmentType === 'Acrylic') {
+        //             return (
+        //               <ExpansionPanelDetails>
+        //                 <FormGroup>
+        //                   <FormControlLabel
+        //                     control={
+        //                       <Checkbox
+        //                         checked={isDefaultChecked(
+        //                           treatment[keyName].ID
+        //                         )}
+        //                         icon={<FavoriteBorder />}
+        //                         checkedIcon={<Favorite />}
+        //                         onChange={handleChange(
+        //                           treatment[keyName].ID,
+        //                           treatment[keyName].About.TreatmentName
+        //                         )}
+        //                         value={`${treatment[keyName].ID}`}
+        //                       />
+        //                     }
+        //                     label={`${treatment[keyName].About.TreatmentName}`}
+        //                   />
+        //                   <p>{`£${treatment[keyName].About.Price} - ${treatment[keyName].About.Duration}mins`}</p>
+        //                   <Divider />
+        //                 </FormGroup>
+        //               </ExpansionPanelDetails>
+        //             );
+        //           } else {
+        //             return null;
+        //           }
+        //         })
+        //       : null}
+        //   </ExpansionPanel>
+        //   {/* PANEL 4 */}
+        //   <ExpansionPanel>
+        //     <ExpansionPanelSummary
+        //       expandIcon={<ExpandMoreIcon />}
+        //       aria-controls="panel1a-content"
+        //       id="panel1a-header"
+        //     >
+        //       <Typography className={classes.heading}>Gel Powder</Typography>
+        //     </ExpansionPanelSummary>
+        //     {treatment !== undefined
+        //       ? Object.keys(treatment).map((keyName, i) => {
+        //           // console.log(treatment[keyName]);
+        //           if (treatment[keyName].About.TreatmentType === 'Gel Powder') {
+        //             return (
+        //               <ExpansionPanelDetails>
+        //                 <FormGroup>
+        //                   <FormControlLabel
+        //                     control={
+        //                       <Checkbox
+        //                         checked={isDefaultChecked(
+        //                           treatment[keyName].ID
+        //                         )}
+        //                         icon={<FavoriteBorder />}
+        //                         checkedIcon={<Favorite />}
+        //                         onChange={handleChange(
+        //                           treatment[keyName].ID,
+        //                           treatment[keyName].About.TreatmentName
+        //                         )}
+        //                         value={`${treatment[keyName].ID}`}
+        //                       />
+        //                     }
+        //                     label={`${treatment[keyName].About.TreatmentName}`}
+        //                   />
+        //                   <p>{`£${treatment[keyName].About.Price} - ${treatment[keyName].About.Duration}mins`}</p>
+        //                   <Divider />
+        //                 </FormGroup>
+        //               </ExpansionPanelDetails>
+        //             );
+        //           } else {
+        //             return null;
+        //           }
+        //         })
+        //       : null}
+        //   </ExpansionPanel>
+        // </ThemeProvider>
       )}
     </>
   );
