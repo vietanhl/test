@@ -10,7 +10,7 @@ const Homepage = (props: any) => {
   const banner = require('../Images/spa-banner.jpg');
   const steps = require('../Images/steps.png');
   const auth = new Auth(props.history);
-  const { isAuthenticated } = props.auth;
+  // const { isAuthenticated } = props.auth;
 
   return (
     <>

@@ -3,16 +3,13 @@ import { Calendar, momentLocalizer } from 'react-big-calendar';
 import moment from 'moment';
 import 'react-big-calendar/lib/css/react-big-calendar.css';
 import * as api from '../../containers/AdminCalendarContainer/AdminCalendarContainer';
-import * as treatmentApi from '../../containers/TreatmentContainer/TreatmentContainer';
-import Modal from '../Modal/Modal';
-import { Route, Link } from 'react-router-dom';
 
 const AdminCalendar: React.FunctionComponent = (props: any) => {
   const localizer = momentLocalizer(moment);
   const now = new Date();
   const [dateReq, setDateReq] = useState(now.toISOString().substring(10, 0));
-  const [modalOpen, setModalOpen] = useState(false);
-  const [currentEven, setCurrentEvent] = useState();
+  // const [modalOpen, setModalOpen] = useState(false);
+  // const [currentEvent, setCurrentEvent] = useState();
   console.log(now);
 
   //TODO: Change default booking.
@@ -109,10 +106,10 @@ const AdminCalendar: React.FunctionComponent = (props: any) => {
     // window.open(`http://localhost:3000/edit-booking/${bookingInfo.ID}`);
   };
 
-  useEffect(() => {
-    if (modalOpen === true) {
-    }
-  }, [modalOpen]);
+  // useEffect(() => {
+  //   if (modalOpen === true) {
+  //   }
+  // }, [modalOpen]);
   return (
     <div style={{ height: '800px', width: '1000px', fontSize: '10px' }}>
       <Calendar

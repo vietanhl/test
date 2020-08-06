@@ -19,7 +19,6 @@ import ExpandMoreIcon from '@material-ui/icons/ExpandMore';
 import * as api from '../../containers/TreatmentContainer/TreatmentContainer';
 import Divider from '@material-ui/core/Divider';
 import { Spinner } from 'reactstrap';
-import { EditorFormatLineSpacing } from 'material-ui/svg-icons';
 
 const useStyles = makeStyles((theme: Theme) =>
   createStyles({

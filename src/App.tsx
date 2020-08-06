@@ -8,7 +8,6 @@ import {
   NavLink,
 } from 'react-router-dom';
 import styled from 'styled-components';
-import Menu from './components/Menu/Menu';
 import {
   HomePageView,
   TreatmentView,
@@ -25,9 +24,7 @@ import Auth from './Auth/auth';
 import Callback from './components/Callback/Callback';
 import Api from './Api/Api';
 //add to view
-import ConfirmationPage from './views/Confirm';
-
-const Container = styled.div``;
+// import ConfirmationPage from './views/Confirm';
 
 const Header = styled.body`
   background-color: white;

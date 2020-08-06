@@ -61,10 +61,10 @@ export default function ScrollableTabsButtonAuto() {
   const handleChange = (event: React.ChangeEvent<{}>, newValue: number) => {
     setValue(newValue);
   };
-  const [treatmentSelected, setTreatmentSelected] = useState();
+  // const [treatmentSelected, setTreatmentSelected] = useState();
   const treatmentPicked = (ev: any) => {
     console.log('treatment picked ' + ev);
-    setTreatmentSelected(ev);
+    // setTreatmentSelected(ev);
   };
 
   return (

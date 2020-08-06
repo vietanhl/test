@@ -6,11 +6,8 @@ import Grid from '@material-ui/core/Grid';
 import * as api from '../../containers/AvailabilityContainer/AvailabilityContainer';
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
-import { css } from 'styled-components';
 
 const Calendar: React.FunctionComponent<any> = (props: any) => {
-  // console.log('CALENDAR - ' + JSON.stringify(props));
-  // console.log('CALENDAR - ' + props.treatmentId);
   const [startDate, setStartDate] = useState(
     new Date().toISOString().split('T')[0]
   );
@@ -37,7 +34,7 @@ const Calendar: React.FunctionComponent<any> = (props: any) => {
 
   useEffect(() => {
     props.parentCallBack(startDate, startTime);
-  }, [startDate, startTime]);
+  }, [props, startDate, startTime]);
 
   var today = new Date();
   const availableTimes = (res: any) => {

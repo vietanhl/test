@@ -2,7 +2,7 @@ import React from 'react';
 import Button from 'react-bootstrap/Button';
 
 const Logout: React.FunctionComponent = (props: any) => {
-  const { isAuthenticated, login } = props.auth;
+  const { isAuthenticated } = props.auth;
 
   return (
     <>

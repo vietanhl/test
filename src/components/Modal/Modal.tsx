@@ -79,22 +79,14 @@ const Modal: React.FunctionComponent = (event: any, props: any) => {
     date: '',
   });
   const [treatmentId, setTreatmentId] = useState();
-  const [treatmentName, setTreatmentName] = useState();
+  // const [treatmentName, setTreatmentName] = useState();
 
   const treatmentSelected = (treatmentId: any, treatmentName: any) => {
     setTreatmentId(treatmentId);
-    setTreatmentName(treatmentName);
+    // setTreatmentName(treatmentName);
+    // console.log(treatmentName);
   };
 
-  // useEffect(() => {
-  // console.log(treatmentId);
-  // console.log(treatmentName);
-  // console.log(event);
-  // props.treatmentId = treatmentId;
-  // props.treatmentName = treatmentName;
-  // }, [treatmentId]);
-
-  // -----------
   useEffect(() => {
     var correctBooking = { ...event.event };
     correctBooking.start = correctBooking.start
@@ -175,7 +167,7 @@ const Modal: React.FunctionComponent = (event: any, props: any) => {
   useEffect(() => {
     console.log('BOOKING' + JSON.stringify(booking));
     console.log(booking.treatmentId);
-    console.log(booking.treatmentName);
+    // console.log(booking.treatmentName);
     //  console.log('MODAL EVENT' + JSON.stringify(event));
   }, [event, booking]);
   // useEffect(() => {

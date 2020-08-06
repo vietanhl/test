@@ -1,5 +1,4 @@
 import React from 'react';
-import Line from '../Line/Line';
 import Button from 'react-bootstrap/Button';
 import { BrowserRouter as Router, Route, Link } from 'react-router-dom';
 import styled from 'styled-components';

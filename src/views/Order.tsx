@@ -6,23 +6,10 @@ import Auth from '../Auth/auth';
 import Line from '../components/Line';
 import * as api from '../containers/EmailConfirmationContainer/EmailConfirmationContainer';
 
-import emailjs from 'emailjs-com';
-
 const Order: React.FunctionComponent = (props: any) => {
   //TODO: Validation if props are not there
   const auth = new Auth(props.history);
   // const { isAuthenticated } = props.auth;
-
-  var data = {
-    service_id: 'default_email',
-    template_id: 'test',
-    user_id: 'user_HOAOjrBk9w65QRfSrglwr',
-    template_params: {
-      email: 'viet-anh.le@hotmail.co.uk',
-      name: 'viet',
-      message: 'This is a test from the code!!! \n\n Enjoy your treatment.',
-    },
-  };
 
   useEffect(() => {
     async function fetchMyApi() {
@@ -39,7 +26,7 @@ const Order: React.FunctionComponent = (props: any) => {
       console.log(JSON.stringify(res));
     }
     fetchMyApi();
-  }, []);
+  }, [props.location.state.date, props.location.state.email, props.location.state.firstName, props.location.state.time, props.location.state.treatmentName]);
 
   return (
     <div>

@@ -27,7 +27,9 @@ const AdminEmployee: React.FunctionComponent = (props: any) => {
   const eventSelected = (ev: any) => {
     setEvent(ev);
     console.log('ev' + JSON.stringify(ev));
-    setEditBooking(true);
+    if (editBooking === false) {
+      setEditBooking(true);
+    }
   };
 
   useEffect(() => {
@@ -54,11 +56,11 @@ const AdminEmployee: React.FunctionComponent = (props: any) => {
     }
     fetchMyApi();
   }, []);
-  const handleChange = (prop: keyof State) => (
-    event: React.ChangeEvent<HTMLInputElement>
-  ) => {
-    setEmployee({ ...employee, [prop]: event.target.value });
-  };
+  // const handleChange = (prop: keyof State) => (
+  //   event: React.ChangeEvent<HTMLInputElement>
+  // ) => {
+  //   setEmployee({ ...employee, [prop]: event.target.value });
+  // };
 
   // const weekdays = ['Monday', 'Tues', 'Wed', 'Thurs', 'Fri', 'Sat', 'Sun'];
   const [weekdays, setWeekdays] = React.useState({
@@ -136,7 +138,11 @@ const AdminEmployee: React.FunctionComponent = (props: any) => {
                 label="Sunday"
               />
             </FormGroup>
-            <TreatmentList parentCallBack={eventSelected} {...props} />
+            <TreatmentList
+              preSelectedTreatmentId={employee.treatments}
+              parentCallBack={eventSelected}
+              {...props}
+            />
 
             <AdminButtons id={employee[key].id} {...props} />
             <p> -------- </p>

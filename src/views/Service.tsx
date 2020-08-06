@@ -14,7 +14,7 @@ const Service: React.FunctionComponent = (props: any) => {
   };
   useEffect(() => {
     console.log('Treatments: ' + JSON.stringify(props));
-  }, []);
+  }, [props]);
 
   return (
     <div>

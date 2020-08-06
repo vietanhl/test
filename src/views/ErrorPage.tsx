@@ -6,9 +6,7 @@ import { BrowserRouter as Router, Route, Link } from 'react-router-dom';
 const ErrorPage: React.FunctionComponent = () => {
   const unicornImage = require('../Images/unicorn.png');
   const sendEmail = () => {
-    {
-      window.open(`mailto:paperandpenltd@gmail.com`);
-    }
+    window.open(`mailto:paperandpenltd@gmail.com`);
   };
   return (
     <>
