@@ -14,5 +14,5 @@ export const treatment = `${config.API_BASE_URL}/admin/treatment`;
 export const bookedAppointments = `${config.API_BASE_URL}/book`;
 // Process booking
 export const payment = `${config.API_BASE_URL}/admin/payment`;
-
+export const treatmentType = `${config.API_BASE_URL}/admin/treatmentType`;
 // export const workSchedule = `${config.API_BASE_URL}/workschedule`;

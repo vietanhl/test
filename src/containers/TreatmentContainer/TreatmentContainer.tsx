@@ -19,3 +19,21 @@ export const getTreatments = async () => {
   await fetchData();
   return response;
 };
+
+export const getTreatmentTypes = async () => {
+  var response: any = null;
+
+  const fetchData = async () => {
+    await axios
+      .get(`${endpoints.treatmentType}`)
+      .then((res) => {
+        response = res.data;
+      })
+      .catch((error) => {
+        console.log(error);
+        return window.location.replace(`${baseURL}/error`);
+      });
+  };
+  await fetchData();
+  return response;
+};

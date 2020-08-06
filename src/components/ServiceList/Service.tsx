@@ -49,10 +49,20 @@ const Service: React.FunctionComponent<any> = (
   const [treatment, setTreatment]: any = useState();
   const [treatmentName, setTreatmentName] = useState(['NoTreatmentAvailable']);
   const [selectedTreatment, setSelectedTreatment] = useState([0]);
+  const [treatmentType, setTreatmentType] = useState([]);
+
   useEffect(() => {
     async function fetchMyApi() {
       const res = await api.getTreatments();
       setTreatment(res);
+      var treatmentTypes: any = [];
+      const treatmentTypeRes = await api.getTreatmentTypes();
+      treatmentTypeRes.map((treatmentType: any) => {
+        console.log(treatmentType.Type);
+        treatmentTypes.push(treatmentType.Type);
+      });
+      setTreatmentType(treatmentTypes);
+      console.log(treatmentTypeRes);
     }
     fetchMyApi();
 
@@ -79,9 +89,10 @@ const Service: React.FunctionComponent<any> = (
   }, []);
 
   useEffect(() => {
-    console.log('PROPS' + JSON.stringify(preSelectedTreatmentName));
-    console.log('PROPS' + preSelectedTreatmentId);
-  }, [preSelectedTreatmentName, preSelectedTreatmentId]);
+    // console.log('PROPS' + JSON.stringify(preSelectedTreatmentName));
+    // console.log('PROPS' + preSelectedTreatmentId);
+    console.log('treatment types: ' + treatmentType);
+  }, [treatmentType]);
   const mapTreatments = () => {
     // pushTreatments('5ef3e49c12835f317dea66fa', 'Pedicure');
     var listOfTreatmentTypes: any[] = [];

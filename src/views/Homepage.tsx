@@ -3,8 +3,6 @@ import TreatmentButton from '../components/TreatmentButton/TreatmentButton';
 import Line from '../components/Line/Line';
 import Menu from '../components/Menu';
 import Auth from '../Auth/auth';
-//import AdminCalendar from 'components/AdminCalendar';
-// import Modal from '../components/Modal/Modal';
 
 const Homepage = (props: any) => {
   const banner = require('../Images/spa-banner.jpg');
@@ -15,15 +13,8 @@ const Homepage = (props: any) => {
   return (
     <>
       <Menu auth={auth} {...props} />
-      {/* <Modal /> */}
-      {/* <AdminCalendar /> */}
       <img src={banner} height="50%" width="100%" alt="banner"></img>
       <TreatmentButton />
-      {/* {!isAuthenticated() ? (
-        <LoginButton {...props} />
-      ) : (
-        <LogoutButton {...props} />
-      )} */}
       <Line />
       <img src={steps} height="50%" width="100%" alt="process"></img>
       <Line />
