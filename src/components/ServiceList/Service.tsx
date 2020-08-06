@@ -58,7 +58,7 @@ const Service: React.FunctionComponent<any> = (
       var treatmentTypes: any = [];
       const treatmentTypeRes = await api.getTreatmentTypes();
       treatmentTypeRes.map((treatmentType: any) => {
-        console.log(treatmentType.Type);
+        // console.log(treatmentType.Type);
         treatmentTypes.push(treatmentType.Type);
       });
       setTreatmentType(treatmentTypes);
@@ -208,22 +208,22 @@ const Service: React.FunctionComponent<any> = (
   };
 
   // Preselect treatments
-  useEffect(() => {
-    // var listOfPreSelectedTreatmentsIds = ['5ef3e49c12835f317dea66fa'];
-    // var listOfPreSelectedTreatmentNames = ['Full set'];
-    // for (
-    //   let i = 0;
-    //   i < listOfPreSelectedTreatmentsIds.length ||
-    //   i < listOfPreSelectedTreatmentNames.length;
-    //   i++
-    // ) {
-    //   pushTreatments(
-    //     listOfPreSelectedTreatmentsIds[i],
-    //     listOfPreSelectedTreatmentNames[i]
-    //   );
-    // }
-    // pushTreatments('5ef3e49c12835f317dea66fa', 'Full set');
-  }, []);
+  // useEffect(() => {
+  // var listOfPreSelectedTreatmentsIds = ['5ef3e49c12835f317dea66fa'];
+  // var listOfPreSelectedTreatmentNames = ['Full set'];
+  // for (
+  //   let i = 0;
+  //   i < listOfPreSelectedTreatmentsIds.length ||
+  //   i < listOfPreSelectedTreatmentNames.length;
+  //   i++
+  // ) {
+  //   pushTreatments(
+  //     listOfPreSelectedTreatmentsIds[i],
+  //     listOfPreSelectedTreatmentNames[i]
+  //   );
+  // }
+  // pushTreatments('5ef3e49c12835f317dea66fa', 'Full set');
+  // }, []);
 
   useEffect(() => {
     console.log('PRE-SELECTED TREATMENTS - ' + JSON.stringify(props));
@@ -274,183 +274,53 @@ const Service: React.FunctionComponent<any> = (
       ) : (
         <ThemeProvider theme={theme}>
           {mapTreatments}
-          <ExpansionPanel defaultExpanded={true}>
-            <ExpansionPanelSummary
-              expandIcon={<ExpandMoreIcon />}
-              aria-controls="panel1a-content"
-              id="panel1a-header"
-            >
-              <Typography className={classes.heading}>Natural Care</Typography>
-            </ExpansionPanelSummary>
-
-            {treatment !== undefined
-              ? Object.keys(treatment).map((keyName, i) => {
-                  if (
-                    treatment[keyName].About.TreatmentType === 'Natural Care'
-                  ) {
-                    return (
-                      <ExpansionPanelDetails>
-                        <FormGroup>
-                          <FormControlLabel
-                            control={
-                              <Checkbox
-                                checked={isDefaultChecked(
-                                  treatment[keyName].ID
-                                )}
-                                icon={<FavoriteBorder />}
-                                checkedIcon={<Favorite />}
-                                onChange={handleChange(
-                                  treatment[keyName].ID,
-                                  treatment[keyName].About.TreatmentName
-                                )}
-                                value={`${treatment[keyName].ID}`}
+          {treatmentType.map((x: any) => {
+            return (
+              <ExpansionPanel>
+                <ExpansionPanelSummary
+                  expandIcon={<ExpandMoreIcon />}
+                  aria-controls="panel1a-content"
+                  id="panel1a-header"
+                >
+                  <Typography className={classes.heading}>{x}</Typography>
+                </ExpansionPanelSummary>
+                {treatment !== undefined
+                  ? Object.keys(treatment).map((keyName, i) => {
+                      // console.log(treatment[keyName]);
+                      if (treatment[keyName].About.TreatmentType === x) {
+                        return (
+                          <ExpansionPanelDetails>
+                            <FormGroup>
+                              <FormControlLabel
+                                control={
+                                  <Checkbox
+                                    checked={isDefaultChecked(
+                                      treatment[keyName].ID
+                                    )}
+                                    icon={<FavoriteBorder />}
+                                    checkedIcon={<Favorite />}
+                                    onChange={handleChange(
+                                      treatment[keyName].ID,
+                                      treatment[keyName].About.TreatmentName
+                                    )}
+                                    value={`${treatment[keyName].ID}`}
+                                  />
+                                }
+                                label={`${treatment[keyName].About.TreatmentName}`}
                               />
-                            }
-                            label={`${treatment[keyName].About.TreatmentName} `}
-                          />
-                          <p>{`£${treatment[keyName].About.Price} - ${treatment[keyName].About.Duration}mins`}</p>
-                          <Divider />
-                        </FormGroup>
-                      </ExpansionPanelDetails>
-                    );
-                  } else {
-                    return null;
-                  }
-                })
-              : null}
-          </ExpansionPanel>
-          {/* Panel 2 */}
-          <ExpansionPanel>
-            <ExpansionPanelSummary
-              expandIcon={<ExpandMoreIcon />}
-              aria-controls="panel1a-content"
-              id="panel1a-header"
-            >
-              <Typography className={classes.heading}>SNS</Typography>
-            </ExpansionPanelSummary>
-            {treatment !== undefined
-              ? Object.keys(treatment).map((keyName, i) => {
-                  // console.log(treatment[keyName]);
-                  if (treatment[keyName].About.TreatmentType === 'SNS') {
-                    return (
-                      <ExpansionPanelDetails>
-                        <FormGroup>
-                          <FormControlLabel
-                            control={
-                              <Checkbox
-                                checked={isDefaultChecked(
-                                  treatment[keyName].ID
-                                )}
-                                icon={<FavoriteBorder />}
-                                checkedIcon={<Favorite />}
-                                onChange={handleChange(
-                                  treatment[keyName].ID,
-                                  treatment[keyName].About.TreatmentName
-                                )}
-                                value={`${treatment[keyName].ID}`}
-                              />
-                            }
-                            label={`${treatment[keyName].About.TreatmentName}`}
-                          />
-                          <p>{`£${treatment[keyName].About.Price} - ${treatment[keyName].About.Duration}mins`}</p>
-                          <Divider />
-                        </FormGroup>
-                      </ExpansionPanelDetails>
-                    );
-                  } else {
-                    return null;
-                  }
-                })
-              : null}
-          </ExpansionPanel>
-          {/* PANEL 3 */}
-          <ExpansionPanel>
-            <ExpansionPanelSummary
-              expandIcon={<ExpandMoreIcon />}
-              aria-controls="panel1a-content"
-              id="panel1a-header"
-            >
-              <Typography className={classes.heading}>Acrylic</Typography>
-            </ExpansionPanelSummary>
-            {treatment !== undefined
-              ? Object.keys(treatment).map((keyName, i) => {
-                  // console.log(treatment[keyName]);
-                  if (treatment[keyName].About.TreatmentType === 'Acrylic') {
-                    return (
-                      <ExpansionPanelDetails>
-                        <FormGroup>
-                          <FormControlLabel
-                            control={
-                              <Checkbox
-                                checked={isDefaultChecked(
-                                  treatment[keyName].ID
-                                )}
-                                icon={<FavoriteBorder />}
-                                checkedIcon={<Favorite />}
-                                onChange={handleChange(
-                                  treatment[keyName].ID,
-                                  treatment[keyName].About.TreatmentName
-                                )}
-                                value={`${treatment[keyName].ID}`}
-                              />
-                            }
-                            label={`${treatment[keyName].About.TreatmentName}`}
-                          />
-                          <p>{`£${treatment[keyName].About.Price} - ${treatment[keyName].About.Duration}mins`}</p>
-                          <Divider />
-                        </FormGroup>
-                      </ExpansionPanelDetails>
-                    );
-                  } else {
-                    return null;
-                  }
-                })
-              : null}
-          </ExpansionPanel>
-          {/* PANEL 4 */}
-          <ExpansionPanel>
-            <ExpansionPanelSummary
-              expandIcon={<ExpandMoreIcon />}
-              aria-controls="panel1a-content"
-              id="panel1a-header"
-            >
-              <Typography className={classes.heading}>Gel Powder</Typography>
-            </ExpansionPanelSummary>
-            {treatment !== undefined
-              ? Object.keys(treatment).map((keyName, i) => {
-                  // console.log(treatment[keyName]);
-                  if (treatment[keyName].About.TreatmentType === 'Gel Powder') {
-                    return (
-                      <ExpansionPanelDetails>
-                        <FormGroup>
-                          <FormControlLabel
-                            control={
-                              <Checkbox
-                                checked={isDefaultChecked(
-                                  treatment[keyName].ID
-                                )}
-                                icon={<FavoriteBorder />}
-                                checkedIcon={<Favorite />}
-                                onChange={handleChange(
-                                  treatment[keyName].ID,
-                                  treatment[keyName].About.TreatmentName
-                                )}
-                                value={`${treatment[keyName].ID}`}
-                              />
-                            }
-                            label={`${treatment[keyName].About.TreatmentName}`}
-                          />
-                          <p>{`£${treatment[keyName].About.Price} - ${treatment[keyName].About.Duration}mins`}</p>
-                          <Divider />
-                        </FormGroup>
-                      </ExpansionPanelDetails>
-                    );
-                  } else {
-                    return null;
-                  }
-                })
-              : null}
-          </ExpansionPanel>
+                              <p>{`£${treatment[keyName].About.Price} - ${treatment[keyName].About.Duration}mins`}</p>
+                              <Divider />
+                            </FormGroup>
+                          </ExpansionPanelDetails>
+                        );
+                      } else {
+                        return null;
+                      }
+                    })
+                  : null}
+              </ExpansionPanel>
+            );
+          })}
         </ThemeProvider>
       )}
     </>
