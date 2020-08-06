@@ -200,30 +200,30 @@ const Menu: React.FunctionComponent = (props: any) => {
             <List>
               <ListItem button key="home">
                 <NavLink className="link" to="/home">
-                  <ListItemText primary="Home" />
+                  <p className="menu-heading"> Home </p>
                 </NavLink>
               </ListItem>
               <ListItem button key="treatment">
                 <NavLink className="link" to="/treatment">
-                  <ListItemText primary="Book now" />
+                  <p className="menu-heading"> Book now </p>
                 </NavLink>
               </ListItem>
               <ListItem button key="treatment">
                 <NavLink className="link" to="/contact">
-                  <ListItemText primary="Contact" />
+                  <p className="menu-heading"> Contact </p>
                 </NavLink>
               </ListItem>
               {isAuthenticated() ? (
                 <ListItem button key="admin">
                   <NavLink className="link" to="/scopes">
-                    <ListItemText primary="Admin" />
+                    <p className="menu-heading"> Admin </p>
                   </NavLink>
                 </ListItem>
               ) : null}
               {isAuthenticated() ? (
                 <ListItem button key="admin-edit">
                   <NavLink className="link" to="/admin-edit">
-                    <ListItemText primary="Manage" />
+                    <p className="menu-heading"> Manage </p>
                   </NavLink>
                 </ListItem>
               ) : null}
