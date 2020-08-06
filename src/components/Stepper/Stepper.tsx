@@ -21,7 +21,6 @@ const useStyles = makeStyles((theme: Theme) =>
     },
   })
 );
-
 function getSteps() {
   return [
     'Select a treatment',

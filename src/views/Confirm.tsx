@@ -4,6 +4,7 @@ import Form from '../components/ContactForm';
 import Line from '../components/Line/Line';
 import OrderButton from '../components/OrderButton/OrderButton';
 import Stepper from '../components/Stepper/Stepper';
+import { useMediaQuery } from 'react-responsive';
 
 const Confirm: React.FunctionComponent = (props: any) => {
   const [form, setForm] = useState({
@@ -25,10 +26,17 @@ const Confirm: React.FunctionComponent = (props: any) => {
     console.log(JSON.stringify(formData));
     setForm(formData);
   };
+  const Default = ({ children }: any) => {
+    const isNotMobile = useMediaQuery({ minWidth: 900 });
+    return isNotMobile ? children : null;
+  };
 
   return (
     <div>
-      <Stepper />
+      <Default>
+        <Stepper />
+      </Default>
+
       <PageTitle title="Contact details" />
 
       <h1 className="heading"> Order Summary </h1>

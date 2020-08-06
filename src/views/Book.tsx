@@ -3,6 +3,7 @@ import PageTitle from '../components/PageTitle';
 import Calendar from '../components/Calendar/Calendar';
 import ConfirmBookingButton from '../components/ConfirmBookingButton/ConfirmBookingButton';
 import Stepper from '../components/Stepper/Stepper';
+import { useMediaQuery } from 'react-responsive';
 
 const Book: React.FunctionComponent = (props: any) => {
   const [date, setDate] = useState();
@@ -12,10 +13,16 @@ const Book: React.FunctionComponent = (props: any) => {
     setDate(date);
     setTime(time);
   };
-
+  const Default = ({ children }: any) => {
+    const isNotMobile = useMediaQuery({ minWidth: 900 });
+    return isNotMobile ? children : null;
+  };
   return (
     <>
-      <Stepper />
+      <Default>
+        <Stepper />
+      </Default>
+
       <PageTitle title="Select an appointment time" />
       <Calendar
         treatmentId={props.location.state.treatmentId}

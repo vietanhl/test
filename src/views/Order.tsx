@@ -1,6 +1,5 @@
 import React, { useEffect } from 'react';
 import PageTitle from '../components/PageTitle';
-import Stepper from '../components/Stepper/Stepper';
 import Menu from '../components/Menu';
 import Auth from '../Auth/auth';
 import Line from '../components/Line';
@@ -26,14 +25,20 @@ const Order: React.FunctionComponent = (props: any) => {
       console.log(JSON.stringify(res));
     }
     fetchMyApi();
-  }, [props.location.state.date, props.location.state.email, props.location.state.firstName, props.location.state.time, props.location.state.treatmentName]);
+  }, [
+    props.location.state.date,
+    props.location.state.email,
+    props.location.state.firstName,
+    props.location.state.time,
+    props.location.state.treatmentName,
+  ]);
 
   return (
     <div>
       <Menu auth={auth} {...props} />
       <br />
       <br />
-      <Stepper />
+
       <PageTitle
         title={`Enjoy your treatment ${props.location.state.firstName}!`}
       />

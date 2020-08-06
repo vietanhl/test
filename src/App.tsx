@@ -23,6 +23,7 @@ import Footer from './components/Footer/Footer';
 import Auth from './Auth/auth';
 import Callback from './components/Callback/Callback';
 import Api from './Api/Api';
+import { useMediaQuery } from 'react-responsive';
 //add to view
 // import ConfirmationPage from './views/Confirm';
 
@@ -39,11 +40,19 @@ const Header = styled.body`
 const App = (props: any) => {
   const auth = new Auth(props.history);
 
+  const Default = ({ children }: any) => {
+    const isNotMobile = useMediaQuery({ minWidth: 1200 });
+    return isNotMobile ? children : null;
+  };
+
   return (
     <>
-      <NavLink className="menu-heading" to="/home">
-        <p className="centered">Paper&Pen</p>
-      </NavLink>{' '}
+      <Default>
+        <NavLink className="menu-heading" to="/home">
+          <p className="centered">Paper&Pen</p>
+        </NavLink>{' '}
+      </Default>
+
       <Header>
         <BrowserRouter>
           {/* <Menu auth={auth} {...props} /> */}

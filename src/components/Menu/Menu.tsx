@@ -138,12 +138,14 @@ const Menu: React.FunctionComponent = (props: any) => {
   //   const isTablet = useMediaQuery({ minWidth: 768, maxWidth: 991 });
   //   return isTablet ? children : null;
   // };
+
+  // RESPONSIVENESS
   const Mobile = ({ children }: any) => {
-    const isMobile = useMediaQuery({ maxWidth: 767 });
+    const isMobile = useMediaQuery({ maxWidth: 900 });
     return isMobile ? children : null;
   };
   const Default = ({ children }: any) => {
-    const isNotMobile = useMediaQuery({ minWidth: 768 });
+    const isNotMobile = useMediaQuery({ minWidth: 901 });
     return isNotMobile ? children : null;
   };
 

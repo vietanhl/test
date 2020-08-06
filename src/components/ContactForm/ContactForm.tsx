@@ -110,7 +110,7 @@ const ContactForm: React.FunctionComponent<any> = (props: any) => {
             control={<Checkbox onChange={handleClickTerms} />}
             label=""
           />
-          I agree to the following cancellation policy: <br />
+          I agree to the cancellation policy: <br />
           No cancellations or changes allowed within 24 hours of the appointment
         </p>
       </FormGroup>
