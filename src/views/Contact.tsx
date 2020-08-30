@@ -6,7 +6,7 @@ import Auth from '../Auth/auth';
 import {
   companyPhone,
   instagram,
-  email,
+  merchantEmail,
   address,
 } from '../config/merchantConfig/config';
 import Line from '../components/Line/Line';
@@ -30,7 +30,7 @@ const ContainerLi = styled.li`
 const Contact: React.FunctionComponent = (props: any) => {
   const auth = new Auth(props.history);
   const sendEmail = () => {
-    window.open(`mailto:${email}`);
+    window.open(`mailto:${merchantEmail}`);
   };
 
   return (

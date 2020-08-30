@@ -34,3 +34,19 @@ export const EditEmployee = async (id: string) => {
   await fetchData();
   return response;
 };
+
+export const deleteEmployee = async (id: string) => {
+  var response: any = null;
+  const fetchData = async () => {
+    await axios
+      .delete(`${endpoints.employee}/${id}`)
+      .then((res) => {
+        response = res.data;
+      })
+      .catch((error) => {
+        console.log('error ' + error);
+      });
+  };
+  await fetchData();
+  return response;
+};

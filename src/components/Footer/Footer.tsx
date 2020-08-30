@@ -1,7 +1,7 @@
 import React from 'react';
 import Line from '../Line/Line';
 import styled from 'styled-components';
-import { instagram, email } from '../../config/merchantConfig/config';
+import { instagram, merchantEmail } from '../../config/merchantConfig/config';
 const { SocialIcon } = require('react-social-icons');
 
 const StyledFooter = styled.div`
@@ -18,7 +18,7 @@ const StyledText = styled.p`
 `;
 const Footer: React.FunctionComponent = () => {
   const sendEmail = () => {
-    window.open(`mailto:${email}`);
+    window.open(`mailto:${merchantEmail}`);
   };
   return (
     <StyledFooter>

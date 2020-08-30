@@ -56,6 +56,11 @@ const useStyles = makeStyles((theme: Theme) =>
         fontFamily: 'Abril Fatface',
       },
     },
+    textField: {
+      marginLeft: theme.spacing(1),
+      marginRight: theme.spacing(1),
+      width: 200,
+    },
   })
 );
 
@@ -152,11 +157,9 @@ const Modal: React.FunctionComponent = (event: any, props: any) => {
       startTime: values.start,
       endTime: values.end,
     };
-    console.log('booking ID' + values.id);
+
     api.updateBooking(mappedDetails, values.id);
     succesAlert();
-    console.log(typeof mappedDetails.startTime);
-    console.log('mapped: ' + JSON.stringify(mappedDetails));
   };
 
   const deleteBooking = () => {
@@ -166,37 +169,10 @@ const Modal: React.FunctionComponent = (event: any, props: any) => {
   };
   useEffect(() => {
     console.log('BOOKING' + JSON.stringify(booking));
-    console.log(booking.treatmentId);
-    // console.log(booking.treatmentName);
-    //  console.log('MODAL EVENT' + JSON.stringify(event));
   }, [event, booking]);
-  // useEffect(() => {
-  //   console.log(booking);
-  // }, [event]);
+
   const deleteIsDisabled = () => {
-    // console.log('value' + values.id);
-    // console.log('booking' + booking.id);
-    if (
-      values.id === undefined
-      // values.title === '' ||
-      // values.start === '' ||
-      // values.end === '' ||
-      // values.employee === '' ||
-      // values.firstName === '' ||
-      // values.lastName === '' ||
-      // values.email === '' ||
-      // values.phone === '' ||
-      // values.treatmentId === '' ||
-      // values.notes === '' ||
-      // values.treatmentName === '' ||
-      // values.bookingId === '' ||
-      // values.date === ''
-      // booking === {}
-    ) {
-      return true;
-    } else {
-      return false;
-    }
+    return values.id === undefined ? true : false;
   };
 
   const succesAlert = () => {
@@ -218,10 +194,7 @@ const Modal: React.FunctionComponent = (event: any, props: any) => {
   return (
     <div>
       <PageTitle title="Manage Booking " />
-      <p>To edit a booking, please click on the calendar event</p>
-      <p>
-        Note: please keep the same format as displayed for a successful update
-      </p>
+      <p>To edit a booking, please click on the calendar appointment</p>
       <ContainerUl>
         <ContainerLi>
           <Button
@@ -262,6 +235,8 @@ const Modal: React.FunctionComponent = (event: any, props: any) => {
           value={values.firstName}
           onChange={handleChange('firstName')}
         />
+      </form>
+      <form className={classes.root} noValidate>
         <TextField
           required
           id="last-name"
@@ -288,26 +263,32 @@ const Modal: React.FunctionComponent = (event: any, props: any) => {
           onChange={handleChange('phone')}
         />
       </form>
-      {/* ADDING */}
-      {/* <form className={classes.root} noValidate>
-        <TextField
-          required
-          id="treatmentId"
-          label="Treatment ID"
-          value={values.treatmentId}
-          onChange={handleChange('treatmentId')}
-        />
-      </form> */}
       <form className={classes.root} noValidate>
         <TextField
-          required
           id="date"
           label="Date"
+          type="date"
           value={values.date}
           onChange={handleChange('date')}
+          InputLabelProps={{
+            shrink: true,
+          }}
         />
       </form>
       <form className={classes.root} noValidate>
+        <TextField
+          id="start"
+          label="Time"
+          type="time"
+          value={values.start}
+          onChange={handleChange('start')}
+          InputLabelProps={{
+            shrink: true,
+          }}
+        />
+      </form>
+
+      {/* <form className={classes.root} noValidate>
         <TextField
           required
           id="start"
@@ -315,17 +296,7 @@ const Modal: React.FunctionComponent = (event: any, props: any) => {
           value={values.start}
           onChange={handleChange('start')}
         />
-      </form>
-      {/* <form className={classes.root} noValidate>
-        <TextField
-          required
-          id="end"
-          label="End Time"
-          value={values.end}
-          onChange={handleChange('end')}
-        />
       </form> */}
-      {/* ADDING */}
       <form className={classes.root} noValidate>
         <TextField
           id="comments"

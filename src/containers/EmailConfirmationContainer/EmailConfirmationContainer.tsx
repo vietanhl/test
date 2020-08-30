@@ -1,5 +1,5 @@
 import axios from 'axios';
-import { baseURL } from '../../config/merchantConfig/config';
+import { baseURL, merchantEmail } from '../../config/merchantConfig/config';
 
 export const sendConfirmationEmail = async (
   email: string,
@@ -27,6 +27,28 @@ export const sendConfirmationEmail = async (
         return window.location.replace(`${baseURL}/error`);
       });
   };
+
+  const merchantConfirmation = async () => {
+    await axios
+      .post(`https://api.emailjs.com/api/v1.0/email/send`, {
+        service_id: 'default_email',
+        template_id: 'confirmationEmail',
+        user_id: 'user_HOAOjrBk9w65QRfSrglwr',
+        template_params: {
+          email: merchantEmail,
+          name: name,
+          message: message,
+        },
+      })
+      .then((res) => {
+        response = res.data;
+      })
+      .catch((error) => {
+        console.log('error: ' + error);
+        return window.location.replace(`${baseURL}/error`);
+      });
+  };
   await fetchData();
+  await merchantConfirmation();
   return response;
 };
