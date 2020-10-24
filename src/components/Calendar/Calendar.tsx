@@ -6,6 +6,7 @@ import Grid from '@material-ui/core/Grid';
 import * as api from '../../containers/AvailabilityContainer/AvailabilityContainer';
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
+import 'date-fns';
 
 const Calendar: React.FunctionComponent<any> = (props: any) => {
   const [startDate, setStartDate] = useState(
