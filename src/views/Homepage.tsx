@@ -7,13 +7,12 @@ import Auth from '../Auth/auth';
 const Homepage = (props: any) => {
   const banner = require('../Images/spa-banner.jpg');
   const steps = require('../Images/steps.png');
-  const auth = new Auth(props.history);
-  // const { isAuthenticated } = props.auth;
+  const auth = new Auth(props.history);  
 
   return (
-    <>
-      <Menu auth={auth} {...props} />
-      <img src={banner} height="50%" width="100%" alt="banner"></img>
+    <> 
+      <Menu auth={auth} {...props} />   
+      <img src={banner} height="50%" width="100%" alt="banner"></img>  
       <TreatmentButton />
       <Line />
       <img src={steps} height="50%" width="100%" alt="process"></img>

@@ -112,7 +112,7 @@ label {
   font-family: 'Abril Fatface', cursive;
   font-size: calc(15px + 1vmin);
   line-height: 1.27;
-  max-width: 75rem;
+  max-width: 75rem;  
 }
 
 .menu-heading:hover {
@@ -198,4 +198,8 @@ label {
 
 .absolute {
   position: absolute;
+  top: 0;
+  width: 100%;
+  clear: "left";
+  overflow: hidden;
 }

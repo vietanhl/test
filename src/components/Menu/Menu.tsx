@@ -27,14 +27,15 @@ import ListItemIcon from '@material-ui/core/ListItemIcon';
 import ListItemText from '@material-ui/core/ListItemText';
 
 const ContainerUl = styled.ul`
-  padding-top: 20px;
+  padding-top: 10px;
   text-align: center;
   list-style: none;
   font-family: 'Abril Fatface', cursive;
-
+  position: fixed;
+  right: 0;
   &:hover {
     color: #282c34;
-  }
+  }  
 `;
 
 const ContainerLi = styled.li`
@@ -128,15 +129,6 @@ const Menu: React.FunctionComponent = (props: any) => {
     setOpen(false);
   };
 
-  // const Desktop = ({ children }: any) => {
-  //   const isDesktop = useMediaQuery({ minWidth: 992 });
-  //   return isDesktop ? children : null;
-  // };
-  // const Tablet = ({ children }: any) => {
-  //   const isTablet = useMediaQuery({ minWidth: 768, maxWidth: 991 });
-  //   return isTablet ? children : null;
-  // };
-
   // RESPONSIVENESS
   const Mobile = ({ children }: any) => {
     const isMobile = useMediaQuery({ maxWidth: 900 });
@@ -150,8 +142,6 @@ const Menu: React.FunctionComponent = (props: any) => {
   const { isAuthenticated } = props.auth;
   return (
     <div className="menu-heading">
-      {/* <Desktop>Desktop or laptop</Desktop>
-      <Tablet>Tablet</Tablet> */}
       <Mobile>
         <div className={classes.root}>
           <CssBaseline />
@@ -172,9 +162,6 @@ const Menu: React.FunctionComponent = (props: any) => {
               >
                 <MenuIcon />
               </IconButton>
-              {/* <Typography variant="h6" noWrap>
-                Menu
-              </Typography> */}
             </Toolbar>
           </AppBar>
           <Drawer
