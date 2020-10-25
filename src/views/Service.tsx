@@ -22,7 +22,7 @@ const Service: React.FunctionComponent = (props: any) => {
   }, [props]);
 
   return (
-    <div>
+    <div>      
       <Default>
         <Stepper />
       </Default>

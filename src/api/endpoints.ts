@@ -1,4 +1,3 @@
-/* istanbul ignore file */
 import config from 'config';
 //Availability of treatments
 export const availability = `${config.API_BASE_URL}/availability`;

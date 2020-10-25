@@ -1,9 +1,9 @@
 import React, { useState, useEffect } from 'react';
-import PageTitle from '../components/PageTitle';
-import AdminCalendar from '../components/AdminCalendar/AdminCalendar';
-import Menu from '../components/Menu';
-import Auth from '../Auth/auth';
-import Modal from '../components/Modal';
+import PageTitle from '../PageTitle';
+import AdminCalendar from '../AdminCalendar/AdminCalendar';
+import Menu from '../Menu';
+import Auth from '../../Auth/auth';
+import Modal from '../Modal';
 
 const Api: React.FunctionComponent = (props: any) => {
   const auth = new Auth(props.history);

@@ -22,7 +22,7 @@ import {
 import Footer from './components/Footer/Footer';
 import Auth from './Auth/auth';
 import Callback from './components/Callback/Callback';
-import Api from './Api/Api';
+import BookingManagement from './components/BookingManagement/BookingManagement';
 import { useMediaQuery } from 'react-responsive';
 //add to view
 // import ConfirmationPage from './views/Confirm';
@@ -86,7 +86,7 @@ const App = (props: any) => {
             {/* <Route
               path="/book"
               component={(props: any) => {
-                return <Api auth={auth} {...props} />;
+                return <BookingManagement auth={auth} {...props} />;
               }}
             /> */}
 
@@ -96,7 +96,7 @@ const App = (props: any) => {
                 component={(props: any) =>
                   auth.isAuthenticated() &&
                   auth.userHasScopes(['read:customer']) ? (
-                    <Api auth={auth} {...props} />
+                    <BookingManagement auth={auth} {...props} />
                   ) : (
                     <Redirect to="/" />
                   )
