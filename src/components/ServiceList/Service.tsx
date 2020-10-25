@@ -174,21 +174,23 @@ const Service: React.FunctionComponent<any> = (
   const pushTreatments = (name: any, tName: string) => {
     var array: any[] = [...selectedTreatment];
     var treatmentNameArray: string[] = [...treatmentName];
-    console.log('treatment ID to be pushed: ' + array);
-    console.log('treatment Name to be pushed: ' + treatmentNameArray);
-    console.log('Treatment ID ' + name);
+    console.log('existing ' + array);
+    console.log('existing: ' + treatmentNameArray);
+    console.log('Treatment ID to be pushed' + name);
+    console.log('Treatment Name to be pushed' + tName);
+  
     if (array.includes(name)) {
       var index = array.indexOf(name);
-      array.splice(index, 1);
-      console.log('removed: ' + array);
+      // console.log("BEFORE SLICE: " + array);
+      array.splice(index, 1);      
+      // console.log("AFTER SLICE: " + array);
+      console.log('removed: ' + name);
+      
     } else {
       array.push(name);
-      console.log('added: ' + array);
+      console.log('added: ' + name);
     }
-    if (array.includes(0)) {
-      index = array.indexOf(0);
-      array.splice(index, 1);
-    }
+   
     // array == treatment ID here.
     setSelectedTreatment(array);
     if (treatmentNameArray.includes(tName)) {
@@ -197,7 +199,7 @@ const Service: React.FunctionComponent<any> = (
       console.log(treatmentNameArray);
     } else {
       treatmentNameArray.push(tName);
-      console.log(treatmentNameArray);
+      console.log("1 pushed name: "+ treatmentNameArray);
     }
     if (treatmentNameArray.includes('NoTreatmentAvailable')) {
       index = treatmentNameArray.indexOf('NoTreatmentAvailable');
@@ -207,31 +209,15 @@ const Service: React.FunctionComponent<any> = (
     setTreatmentName(treatmentNameArray);
   };
 
-  // Preselect treatments
-  // useEffect(() => {
-  // var listOfPreSelectedTreatmentsIds = ['5ef3e49c12835f317dea66fa'];
-  // var listOfPreSelectedTreatmentNames = ['Full set'];
-  // for (
-  //   let i = 0;
-  //   i < listOfPreSelectedTreatmentsIds.length ||
-  //   i < listOfPreSelectedTreatmentNames.length;
-  //   i++
-  // ) {
-  //   pushTreatments(
-  //     listOfPreSelectedTreatmentsIds[i],
-  //     listOfPreSelectedTreatmentNames[i]
-  //   );
-  // }
-  // pushTreatments('5ef3e49c12835f317dea66fa', 'Full set');
-  // }, []);
-
+// WORK AROUND, Copy push treatment here.
   useEffect(() => {
-    console.log('PRE-SELECTED TREATMENTS - ' + JSON.stringify(props));
-    console.log('PRE-SELECTED TREATMENTS - ' + props.preSelectedTreatmentId);
-    console.log('PRE-SELECTED TNAME ' + props.preSelectTreatmentName);
-    console.log('TYPEOF' + props.preSelectedTreatmentId);
+    // console.log('PRE-SELECTED TREATMENTS - ' + JSON.stringify(props));
+    // console.log('PRE-SELECTED TREATMENTS - ' + props.preSelectedTreatmentId);
+    // console.log('PRE-SELECTED TNAME ' + props.preSelectTreatmentName);
+    // console.log('TYPEOF' + props.preSelectedTreatmentId);
     var treatmentIds: string | any[] = [];
     var treatmentNames: string | any[] = [];
+   
     if (props.preSelectedTreatmentId !== undefined) {
       treatmentIds = Object.values(props.preSelectedTreatmentId);
     }
@@ -239,18 +225,53 @@ const Service: React.FunctionComponent<any> = (
       treatmentNames = Object.values(props.preSelectTreatmentName);
     }
     // pushTreatments(treatmentIds[0], treatmentNames[0]);
-    for (let i = 0; i < treatmentIds.length; i++) {
-      console.log(treatmentNames[i]);
-      console.log(treatmentIds[i]);
-      pushTreatments(treatmentIds[i], treatmentNames[i]);
+    console.log("TEST TREATMENT ID: " + treatmentIds);
+    console.log("TEST TREATMENT NAME: " + treatmentNames);
+    console.log("TEST ")
+    //---- Added
+    var array: any[] = [];
+    var treatmentNameArray: string[] = [];
+    for (let i = 0; i < treatmentIds.length; i++) {   
+    if (array.includes(treatmentIds[i])) {
+      var index = array.indexOf(treatmentIds[i]);
+      // console.log("BEFORE SLICE: " + array);
+      array.splice(index, 1);      
+      // console.log("AFTER SLICE: " + array);
+      console.log('removed: ' + treatmentIds[i]);
+      
+    } else {
+      array.push(treatmentIds[i]);
+      console.log('added: ' + treatmentIds[i]);
     }
+   
+    // array == treatment ID here.
+    setSelectedTreatment(array);
+    if (treatmentNameArray.includes(treatmentNames[i])) {
+      index = treatmentNameArray.indexOf(treatmentNames[i]);
+      treatmentNameArray.splice(index, 1);
+      console.log(treatmentNameArray);
+    } else {
+      treatmentNameArray.push(treatmentNames[i]);
+      console.log("1 pushed name: "+ treatmentNameArray);
+    }
+    if (treatmentNameArray.includes('NoTreatmentAvailable')) {
+      index = treatmentNameArray.indexOf('NoTreatmentAvailable');
+      treatmentNameArray.splice(index, 1);
+    }
+    console.log('ARRAY ' + treatmentNameArray);
+    setTreatmentName(treatmentNameArray);
+    //---- Added
+    
+      // pushTreatments(treatmentIds[i], treatmentNames[i]);
+    }
+    console.log("TEST END")
     // for (const item in props.preSelectedTreatmentId) {
     //   console.log('obj' + props.preSelectedTreatmentId[item]);
     //   pushTreatments(props.preSelectedTreatmentId[item]);
     // }
   }, [props.preSelectedTreatmentId]);
 
-  // TODO: need a useEffect that will set Selected Treatment as a prop.
+  // // TODO: need a useEffect that will set Selected Treatment as a prop.
   const isDefaultChecked = (treatmentId: any) => {
     if (selectedTreatment.includes(treatmentId)) {
       // console.log('before decision' + typeof selectedTreatment[0]);

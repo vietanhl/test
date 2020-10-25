@@ -1,6 +1,6 @@
 import React from 'react';
 import Button from 'react-bootstrap/Button';
-import { BrowserRouter as Router, Route, Link } from 'react-router-dom';
+import { BrowserRouter as  Route, Link } from 'react-router-dom';
 import * as api from '../../containers/BookContainer/BookContainer';
 import styled from 'styled-components';
 import { ToastContainer, toast } from 'react-toastify';
@@ -61,6 +61,7 @@ const OrderButton: React.FunctionComponent = (props: any) => {
   };
 
   const validateEmail = (mail: string) => {
+    
     if (/^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/.test(mail)) {
       return true;
     }
